@@ -1,0 +1,22 @@
+{
+  "name": "jobee",
+  "version": "0.0.1",
+  "description": "Job Finder.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexlee-dev/jobee.git"
+  },
+  "keywords": [
+    "job",
+    "search",
+    "career"
+  ],
+  "author": "Alex Lee",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alexlee-dev/jobee/issues"
+  },
+  "homepage": "https://github.com/alexlee-dev/jobee#readme"
+}
