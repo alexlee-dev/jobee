@@ -4,6 +4,11 @@
   "description": "Job Finder.",
   "main": "index.js",
   "scripts": {},
+  "files": [
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexlee-dev/jobee.git"
