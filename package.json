@@ -2,9 +2,20 @@
   "name": "jobee",
   "version": "0.1.0",
   "description": "Job Finder.",
-  "main": "index.js",
-  "scripts": {},
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-scripts": "2.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "files": [
+    "public",
+    "src",
     "package.json",
     "README.md",
     "LICENSE"
@@ -23,5 +34,14 @@
   "bugs": {
     "url": "https://github.com/alexlee-dev/jobee/issues"
   },
-  "homepage": "https://github.com/alexlee-dev/jobee#readme"
+  "homepage": "https://jobee.netlify.com/",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
