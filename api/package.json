@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "appName": "Jobee",
+  "version": "0.1.0",
+  "description": "API for Jobee.",
+  "main": "lib/server.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "dev": "nodemon -i lib --exec \"babel src -d lib && node lib/server.js\" lib/server.js",
+    "start": "node lib/server.js"
+  },
+  "author": "Alex Lee",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "boxen": "^2.1.0",
+    "chalk": "^2.4.2",
+    "cheerio": "^1.0.0-rc.2",
+    "diskdb": "^0.1.17",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "figlet": "^1.2.1",
+    "firebase": "^5.8.3",
+    "gradient-string": "^1.2.0",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.9"
+  }
+}
