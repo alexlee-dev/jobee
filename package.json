@@ -21,6 +21,8 @@
     "eject": "react-scripts eject"
   },
   "files": [
+    "api/lib",
+    "api/package.json",
     "public",
     "src",
     "package.json",
