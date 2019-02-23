@@ -4,16 +4,21 @@ import { connect } from 'react-redux'
 import { Box } from 'grommet'
 import ActionBar from './components/ActionBar'
 import Spinner from './components/Spinner'
-import { testDB } from './firebase/firestore';
+import SignInButton from './components/SignInButton'
+import { checkDatabaseConnection } from './redux/actions/firebase'
+import store from './redux/store/store'
 
 const App = ({ app }) => {
-  useEffect(() => {
-    testDB()
-  })
   const { isLoading } = app
+
+  useEffect(() => {
+    store.dispatch(checkDatabaseConnection())
+  }, [isLoading])
+
   return (
     <Box fill justify="end">
       {isLoading && <Spinner />}
+      {!isLoading && <SignInButton />}
       <ActionBar />
     </Box>
   )
