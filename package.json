@@ -4,11 +4,11 @@
   "description": "Job Finder.",
   "dependencies": {
     "cross-env": "^5.2.0",
-    "dotenv": "^6.2.0",
     "eslint-plugin-flowtype": "^3.4.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "firebase": "^5.8.4",
     "grommet": "^2.4.0",
     "grommet-icons": "^4.2.0",
     "is-online": "^8.0.0",
