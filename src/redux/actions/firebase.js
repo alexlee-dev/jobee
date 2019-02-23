@@ -19,12 +19,14 @@ const connectToDatabase = () => {
 
 export const checkDatabaseConnection = () => {
   return dispatch => {
-    return connectToDatabase().then(
-      () => {
+    return connectToDatabase()
+      .then(() => {
         dispatch(setDatabaseConnected(true))
         dispatch(setLoadingState(false))
-      },
-      () => dispatch(setDatabaseConnected(false))
-    )
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(setDatabaseConnected(false))
+      })
   }
 }
