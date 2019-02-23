@@ -12,6 +12,7 @@ const App = ({ app }) => {
   const { isLoading } = app
 
   useEffect(() => {
+    console.log({ env: process.env })
     store.dispatch(checkDatabaseConnection())
   }, [isLoading])
 
