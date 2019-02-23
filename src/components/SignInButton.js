@@ -4,13 +4,12 @@ import { connect } from 'react-redux'
 import 'react-awesome-button/dist/styles.css'
 import { AwesomeButton } from 'react-awesome-button'
 import { Box } from 'grommet'
-import { checkDatabaseConnection } from '../redux/actions/firebase'
 
 const SignInButton = ({ dispatch }) => {
   return (
     <Box align="center" justify="center">
       <AwesomeButton
-        action={() => dispatch(checkDatabaseConnection('Alex'))}
+        action={() => alert('clicked')}
         ripple
         size="small"
         type="primary"
@@ -19,6 +18,10 @@ const SignInButton = ({ dispatch }) => {
       </AwesomeButton>
     </Box>
   )
+}
+
+SignInButton.propTypes = {
+  dispatch: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = ({ dispatch }) => ({ dispatch })
