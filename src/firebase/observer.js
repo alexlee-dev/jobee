@@ -3,6 +3,7 @@ import 'firebase/auth'
 import store from '../redux/store/store'
 import { setLoadingState } from '../redux/actions/app'
 import { setHasCheckedForUser, setUser } from '../redux/actions/firebase'
+import { emptyUser } from '../constants'
 
 // * Firebase User Observer
 firebase.auth().onAuthStateChanged(user => {
@@ -18,6 +19,7 @@ firebase.auth().onAuthStateChanged(user => {
     // No user is signed in.
     console.log('User is not signed in.')
     store.dispatch(setHasCheckedForUser(true))
+    store.dispatch(setUser(emptyUser))
     store.dispatch(setLoadingState(false))
   }
 })
