@@ -1,0 +1,23 @@
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import store from '../redux/store/store'
+import { setLoadingState } from '../redux/actions/app'
+import { setHasCheckedForUser, setUser } from '../redux/actions/firebase'
+
+// * Firebase User Observer
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    // User is signed in.
+    console.log('User is signed in.')
+    const { displayName, email, photoURL } = user
+    const userInfo = { displayName, email, photoURL }
+    store.dispatch(setHasCheckedForUser(true))
+    store.dispatch(setUser(userInfo))
+    store.dispatch(setLoadingState(false))
+  } else {
+    // No user is signed in.
+    console.log('User is not signed in.')
+    store.dispatch(setHasCheckedForUser(true))
+    store.dispatch(setLoadingState(false))
+  }
+})

@@ -8,13 +8,7 @@ export const signInWithRedirect = () =>
 
 export const getRedirectResult = () => firebase.auth().getRedirectResult()
 
-
-
-
-
-
-
-
+export const signOut = () => firebase.auth().signOut()
 
 // import * as firebase from 'firebase/app'
 // import 'firebase/auth'

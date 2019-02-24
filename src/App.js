@@ -1,39 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import './firebase/observer'
 import { Box } from 'grommet'
 import ActionBar from './components/ActionBar'
 import Spinner from './components/Spinner'
 import SignInButton from './components/SignInButton'
-import {
-  checkDatabaseConnection,
-  checkUser,
-  checkIndexedDB
-} from './redux/actions/firebase'
-import store from './redux/store/store'
+import SignOutButton from './components/SignOutButton'
 
 const App = ({ app, firebase }) => {
   const { isLoading } = app
-  const { hasCheckedForUser } = firebase
   const { displayName } = firebase.user
-  const { id } = firebase.user
-
-  useEffect(() => {
-    store.dispatch(checkDatabaseConnection())
-  }, [isLoading])
-
-  useEffect(() => {
-    store.dispatch(checkUser())
-  }, [id])
-
-  // useEffect(() => {
-  //   store.dispatch(checkIndexedDB())
-  // }, [displayName])
 
   return (
     <Box fill justify="end">
       {isLoading && <Spinner />}
-      {!isLoading && hasCheckedForUser && !displayName && <SignInButton />}
+      {!isLoading && !displayName && <SignInButton />}
+      {displayName && <SignOutButton />}
       <ActionBar />
     </Box>
   )
