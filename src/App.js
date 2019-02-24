@@ -5,21 +5,26 @@ import { Box } from 'grommet'
 import ActionBar from './components/ActionBar'
 import Spinner from './components/Spinner'
 import SignInButton from './components/SignInButton'
-import { checkDatabaseConnection } from './redux/actions/firebase'
+import { checkDatabaseConnection, checkUser } from './redux/actions/firebase'
 import store from './redux/store/store'
 
-const App = ({ app }) => {
+const App = ({ app, firebase }) => {
   const { isLoading } = app
+  const { hasCheckedForUser } = firebase
+  const { id } = firebase.user
 
   useEffect(() => {
-    console.log({ env: process.env })
     store.dispatch(checkDatabaseConnection())
   }, [isLoading])
+
+  useEffect(() => {
+    store.dispatch(checkUser())
+  }, [id])
 
   return (
     <Box fill justify="end">
       {isLoading && <Spinner />}
-      {!isLoading && <SignInButton />}
+      {!isLoading && hasCheckedForUser && !id && <SignInButton />}
       <ActionBar />
     </Box>
   )
@@ -27,9 +32,10 @@ const App = ({ app }) => {
 
 App.propTypes = {
   app: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  firebase: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ app }) => ({ app })
+const mapStateToProps = ({ app, firebase }) => ({ app, firebase })
 
 export default connect(mapStateToProps)(App)

@@ -4,12 +4,13 @@ import { connect } from 'react-redux'
 import 'react-awesome-button/dist/styles.css'
 import { AwesomeButton } from 'react-awesome-button'
 import { Box } from 'grommet'
+import { signInWithRedirect } from '../firebase/auth'
 
 const SignInButton = ({ dispatch }) => {
   return (
     <Box align="center" justify="center">
       <AwesomeButton
-        action={() => alert('clicked')}
+        action={signInWithRedirect}
         ripple
         size="small"
         type="primary"
