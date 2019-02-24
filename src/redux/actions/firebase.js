@@ -63,7 +63,6 @@ export const checkUser = () => {
           dispatch(setHasCheckedForUser(true))
           dispatch(setUser(user))
         } else {
-          console.warn('User could not be found.')
           dispatch(setHasCheckedForUser(true))
           dispatch(
             setUser({
@@ -84,6 +83,79 @@ export const checkUser = () => {
         )
         console.log(err)
         dispatch(setUser(null))
+      })
+  }
+}
+
+const getLocalUserData = () => {
+  return new Promise((resolve, reject) => {
+    const idb = window.indexedDB
+    const dbPromise = idb.open('firebaseLocalStorageDb')
+
+    dbPromise.onsuccess = event => {
+      const { result } = event.target
+      console.log({ result })
+      const numberOfObjectStores = result.objectStoreNames.length
+      if (numberOfObjectStores > 0) {
+        const transaction = result.transaction(
+          'firebaseLocalStorage',
+          'readonly'
+        )
+        const objectStore = transaction.objectStore('firebaseLocalStorage')
+        console.log({ objectStore })
+
+        const request = objectStore.get(
+          'firebase:authUser:AIzaSyDl4JQtZFD0SMRiGUqHiLZMUGXDjWrU_aM:[DEFAULT]'
+        )
+        request.onsuccess = event => {
+          const {
+            displayName,
+            email,
+            lastLoginAt,
+            photoURL
+          } = event.target.result.value
+          const userData = { displayName, email, lastLoginAt, photoURL }
+          console.log({ displayName, email, lastLoginAt, photoURL })
+          resolve(userData)
+        }
+        request.onerror = event => {
+          console.warn('An error has occured.')
+          console.log({ event })
+          reject(event)
+        }
+      } else {
+        reject('No object store.')
+      }
+    }
+
+    dbPromise.onerror = event => {
+      console.warn('An error has occured.')
+      console.log({ event })
+      reject(event)
+    }
+  })
+}
+
+export const checkIndexedDB = () => {
+  return dispatch => {
+    return getLocalUserData()
+      .then(userData => {
+        // * Dispatch an action to set this local user data
+        dispatch(setHasCheckedForUser(true))
+        dispatch(setUser(userData))
+      })
+      .catch(err => {
+        // ? Dispatch an action to set that there was no local user data
+        console.warn(err)
+        dispatch(setHasCheckedForUser(true))
+        dispatch(
+          setUser({
+            displayName: null,
+            email: null,
+            lastLoginAt: null,
+            photoURL: null
+          })
+        )
       })
   }
 }

@@ -2,13 +2,10 @@ const firebaseDefaultState = {
   hasCheckedForUser: false,
   isDatabaseConnected: false,
   user: {
-    accessToken: null,
+    displayName: null,
     email: null,
-    firstName: null,
-    id: null,
-    isNewUser: null,
-    lastName: null,
-    picture: null
+    lastLoginAt: null,
+    photoURL: null
   }
 }
 
