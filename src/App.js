@@ -4,22 +4,29 @@ import { connect } from 'react-redux'
 import './firebase/observer'
 import { Box } from 'grommet'
 import ActionBar from './components/ActionBar'
-import Spinner from './components/Spinner'
 import SignInButton from './components/SignInButton'
 import SignOutButton from './components/SignOutButton'
+import SignInScreen from './components/SignInScreen'
+import LoadingScreen from './components/LoadingScreen'
 
 const App = ({ app, firebase }) => {
   const { isLoading } = app
   const { displayName } = firebase.user
 
-  return (
-    <Box fill justify="end">
-      {isLoading && <Spinner />}
-      {!isLoading && !displayName && <SignInButton />}
-      {displayName && <SignOutButton />}
-      <ActionBar />
-    </Box>
-  )
+  if (isLoading) {
+    return <LoadingScreen />
+  } else if (!isLoading && !displayName) {
+    return <SignInScreen />
+  } else {
+    return (
+      <Box fill justify="end">
+        {/* {isLoading && <Spinner />} */}
+        {!isLoading && !displayName && <SignInButton />}
+        {displayName && <SignOutButton />}
+        <ActionBar />
+      </Box>
+    )
+  }
 }
 
 App.propTypes = {

@@ -16,6 +16,7 @@
     "react": "^16.8.2",
     "react-awesome-button": "^6.0.0",
     "react-dom": "^16.8.2",
+    "react-google-button": "^0.5.3",
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.5",
     "react-spinners": "^0.5.1",
