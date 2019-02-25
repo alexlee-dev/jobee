@@ -8,6 +8,8 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { Grommet, grommet } from 'grommet'
 
+grommet.global.colors.brand = '#fca311'
+
 ReactDOM.render(
   <Provider store={store}>
     <Grommet full theme={grommet}>

@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import store from '../redux/store/store'
-import { setLoadingState } from '../redux/actions/app'
+import { setLoadingState, setCurrentScreen } from '../redux/actions/app'
 import { setHasCheckedForUser, setUser } from '../redux/actions/firebase'
 import { emptyUser } from '../constants'
 
@@ -14,6 +14,7 @@ firebase.auth().onAuthStateChanged(user => {
     const userInfo = { displayName, email, photoURL }
     store.dispatch(setHasCheckedForUser(true))
     store.dispatch(setUser(userInfo))
+    store.dispatch(setCurrentScreen('jobs'))
     store.dispatch(setLoadingState(false))
   } else {
     // No user is signed in.
