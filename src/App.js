@@ -8,6 +8,7 @@ import SignOutButton from './components/SignOutButton'
 import SignInScreen from './components/SignInScreen'
 import LoadingScreen from './components/LoadingScreen'
 import { screens } from './constants'
+import NavBar from './components/NavBar'
 
 const App = ({ app, firebase }) => {
   const { currentScreen, isLoading } = app
@@ -21,13 +22,14 @@ const App = ({ app, firebase }) => {
     return <SignInScreen />
   } else {
     return (
-      <Box fill justify="end">
+      <Box fill justify="between">
+        <NavBar />
         {/* {isLoading && <Spinner />}
         {!isLoading && !displayName && <SignInButton />}
          */}
         <Screen />
         {/* ! Remember to remove this. */}
-        {displayName && <SignOutButton />}
+        {/* {displayName && <SignOutButton />} */}
         <ActionBar />
       </Box>
     )
