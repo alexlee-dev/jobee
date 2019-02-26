@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box } from 'grommet'
 import { SettingsOption, Sort, User } from 'grommet-icons'
+import ActionBarButton from './ActionBarButton'
 
 const ActionBar = ({ app }) => {
-  const { currentScreen, isLoading } = app
+  const { isLoading } = app
   return (
     <Box
       background="light-2"
@@ -16,9 +17,9 @@ const ActionBar = ({ app }) => {
     >
       {!isLoading && (
         <React.Fragment>
-          <Sort color={currentScreen === 'jobs' && 'brand'} />
-          <User color={currentScreen === 'user' && 'brand'} />
-          <SettingsOption color={currentScreen === 'settings' && 'brand'} />
+          <ActionBarButton icon={Sort} screen="jobs" />
+          <ActionBarButton icon={User} screen="user" />
+          <ActionBarButton icon={SettingsOption} screen="settings" />
         </React.Fragment>
       )}
     </Box>
