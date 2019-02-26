@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import './firebase/observer'
 import { Box } from 'grommet'
 import ActionBar from './components/ActionBar'
-import SignOutButton from './components/SignOutButton'
 import SignInScreen from './components/SignInScreen'
 import LoadingScreen from './components/LoadingScreen'
 import { screens } from './constants'
@@ -24,12 +23,7 @@ const App = ({ app, firebase }) => {
     return (
       <Box fill justify="between">
         <NavBar />
-        {/* {isLoading && <Spinner />}
-        {!isLoading && !displayName && <SignInButton />}
-         */}
         <Screen />
-        {/* ! Remember to remove this. */}
-        {/* {displayName && <SignOutButton />} */}
         <ActionBar />
       </Box>
     )

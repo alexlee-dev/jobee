@@ -6,6 +6,7 @@ const Settings = () => {
   return (
     <Box fill>
       <h1>SETTINGS SCREEN</h1>
+      <SignOutButton />
     </Box>
   )
 }

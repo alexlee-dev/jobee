@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Heading, Image } from 'grommet'
-import { SettingsOption, Sort, User } from 'grommet-icons'
-import ActionBarButton from './ActionBarButton'
+import { User } from 'grommet-icons'
 
 const NavBar = ({ app, firebase }) => {
   const { currentScreen } = app
