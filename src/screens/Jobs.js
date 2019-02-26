@@ -6,7 +6,6 @@ const Jobs = () => {
   return (
     <Box fill>
       <h1>JOBS SCREEN</h1>
-      <SignOutButton />
     </Box>
   )
 }
