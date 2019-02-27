@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Heading, Image } from 'grommet'
-import { User } from 'grommet-icons'
 
 const NavBar = ({ app, firebase }) => {
   const { currentScreen } = app
@@ -12,24 +11,16 @@ const NavBar = ({ app, firebase }) => {
   return (
     <Box
       align="center"
-      background="light-2"
+      background="light-3"
       direction="row"
       gap="medium"
       height="60px"
       justify="start"
       pad="medium"
     >
-      {photoURL ? (
-        <Box height="34px" round="full" width="34px">
-          <Image
-            fit="contain"
-            src={photoURL}
-            style={{ borderRadius: '100%' }}
-          />
-        </Box>
-      ) : (
-        <User />
-      )}
+      <Box height="34px" round="full" width="34px">
+        <Image fit="contain" src={photoURL} style={{ borderRadius: '100%' }} />
+      </Box>
       <Heading level="2" margin="none">
         {screenName}
       </Heading>

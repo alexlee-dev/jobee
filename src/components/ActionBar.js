@@ -9,7 +9,7 @@ const ActionBar = ({ app }) => {
   const { isLoading } = app
   return (
     <Box
-      background="light-2"
+      background="light-3"
       direction="row"
       height="50px"
       justify="between"
