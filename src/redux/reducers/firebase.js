@@ -1,4 +1,7 @@
 const firebaseDefaultState = {
+  database: {
+    jobs: []
+  },
   hasCheckedForUser: false,
   user: {
     displayName: null,
@@ -9,6 +12,11 @@ const firebaseDefaultState = {
 
 export default (state = firebaseDefaultState, action) => {
   switch (action.type) {
+    case 'SET_DATABASE':
+      const { collectionName, dataArray } = action.payload
+      return Object.assign({}, state, {
+        database: { [collectionName]: dataArray }
+      })
     case 'SET_USER':
       const { user } = action.payload
       return Object.assign({}, state, { user })

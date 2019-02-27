@@ -1,9 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 
-const db = firebase.firestore()
-
-export const testDB = () => console.log({ db })
+export const database = firebase.firestore()
 
 // /**
 //  * Stores data in a document.

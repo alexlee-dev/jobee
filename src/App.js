@@ -12,7 +12,6 @@ import NavBar from './components/NavBar'
 const App = ({ app, firebase }) => {
   const { currentScreen, isLoading } = app
   const { displayName } = firebase.user
-
   const Screen = screens[currentScreen]
 
   if (isLoading) {
