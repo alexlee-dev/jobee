@@ -4,16 +4,19 @@
   "description": "Job Finder.",
   "dependencies": {
     "cross-env": "^5.2.0",
-    "dotenv": "^6.2.0",
     "eslint-plugin-flowtype": "^3.4.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "firebase": "^5.8.4",
     "grommet": "^2.4.0",
     "grommet-icons": "^4.2.0",
+    "is-online": "^8.0.0",
     "polished": "^3.0.0",
     "react": "^16.8.2",
+    "react-awesome-button": "^6.0.0",
     "react-dom": "^16.8.2",
+    "react-google-button": "^0.5.3",
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.5",
     "react-spinners": "^0.5.1",
@@ -23,6 +26,7 @@
   },
   "scripts": {
     "start": "cross-env BROWSER=none react-scripts start",
+    "start-offline": "cross-env BROWSER=none OFFLINE=true react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
