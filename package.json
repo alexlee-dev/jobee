@@ -27,6 +27,7 @@
   "scripts": {
     "start": "cross-env BROWSER=none react-scripts start",
     "start-offline": "cross-env BROWSER=none OFFLINE=true react-scripts start",
+    "test": "react-scripts test",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
@@ -62,5 +63,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "redux-mock-store": "^1.5.3"
+  }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Heading, Image } from 'grommet'
 
-const NavBar = ({ app, firebase }) => {
+export const NavBar = ({ app, firebase }) => {
   const { currentScreen } = app
   const screenName =
     currentScreen.charAt(0).toUpperCase() + currentScreen.slice(1)

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Button, Box, Image, Text } from 'grommet'
 import { FormNext } from 'grommet-icons'
 
-const SettingsOptionProfile = ({ app, firebase }) => {
+export const SettingsOptionProfile = ({ app, firebase }) => {
   const { displayName, email, photoURL } = firebase.user
   return (
     <Button hoverIndicator name="button" onClick={() => {}}>

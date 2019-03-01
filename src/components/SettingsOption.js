@@ -11,7 +11,7 @@ const determineStyle = top => {
   }
 }
 
-const SettingsOption = ({
+export const SettingsOption = ({
   comingSoon,
   handleClick,
   icon,
