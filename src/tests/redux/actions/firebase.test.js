@@ -1,11 +1,17 @@
 import '../../../firebase/init'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 import {
   setHasCheckedForUser,
   setUser,
-  setDatabase
+  setDatabase,
+  getDatabase
 } from '../../../redux/actions/firebase'
 
-describe('Firebase Reducer', () => {
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
+
+describe('Firebase Actions', () => {
   it('Should set up the setHasCheckedForUser action object.', () => {
     const action = setHasCheckedForUser(true)
     expect(action).toEqual({
@@ -29,6 +35,16 @@ describe('Firebase Reducer', () => {
     expect(action).toEqual({
       type: 'SET_DATABASE',
       payload: { collectionName: 'testCollection', dataArray }
+    })
+  })
+
+  it('Should set up the getDatabase thunk.', () => {
+    const store = mockStore({})
+    const expectedActions = ['SET_DATABASE', 'SET_LOADING_STATE']
+
+    return store.dispatch(getDatabase()).then(() => {
+      const actualActions = store.getActions().map(action => action.type)
+      expect(actualActions).toEqual(expectedActions)
     })
   })
 })

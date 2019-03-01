@@ -1,0 +1,29 @@
+import appReducer from '../../../redux/reducers/app'
+
+describe('App Reducer', () => {
+  const appDefaultState = {
+    currentScreen: null,
+    isLoading: true
+  }
+
+  it('Should set up default state.', () => {
+    const state = appReducer(undefined, { type: '@@INIT' })
+    expect(state).toEqual(appDefaultState)
+  })
+
+  it('Should handle the setCurrentScreen action.', () => {
+    const state = appReducer(undefined, {
+      type: 'SET_CURRENT_SCREEN',
+      payload: { currentScreen: 'jobs' }
+    })
+    expect(state).toEqual({ currentScreen: 'jobs', isLoading: true })
+  })
+
+  it('Should handle the setLoadingState action.', () => {
+    const state = appReducer(undefined, {
+      type: 'SET_LOADING_STATE',
+      payload: { isLoading: false }
+    })
+    expect(state).toEqual({ currentScreen: null, isLoading: false })
+  })
+})

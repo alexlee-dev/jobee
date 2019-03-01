@@ -9,7 +9,7 @@ import LoadingScreen from './components/LoadingScreen'
 import { screens } from './constants'
 import NavBar from './components/NavBar'
 
-const App = ({ app, firebase }) => {
+export const App = ({ app, firebase }) => {
   const { currentScreen, isLoading } = app
   const { displayName } = firebase.user
   const Screen = screens[currentScreen]

@@ -1,6 +1,6 @@
 import { setLoadingState, setCurrentScreen } from '../../../redux/actions/app'
 
-describe('App Reducer', () => {
+describe('App Actions', () => {
   it('Should set up the setLoadingState action object.', () => {
     const action = setLoadingState(true)
     expect(action).toEqual({
