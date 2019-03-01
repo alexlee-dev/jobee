@@ -1,4 +1,6 @@
 import firebase from 'firebase/app'
 import config from './config'
 
-firebase.initializeApp(config)
+if (process.env.CI !== 'true') {
+  firebase.initializeApp(config)
+}
