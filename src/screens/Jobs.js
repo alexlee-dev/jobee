@@ -6,14 +6,23 @@ import JobCard from '../components/JobCard'
 
 export const Jobs = ({ firebase }) => {
   const { jobs } = firebase.database
+  const { data } = jobs[0]
   console.log({ jobs })
   return (
     <Box align="center" fill gap="medium" overflow="auto">
-      {jobs.map(job => {
+      <JobCard
+        addressLocality={data.addressLocality}
+        addressRegion={data.addressRegion}
+        datePosted={data.datePosted}
+        description={data.description}
+        employmentType={data.employmentType}
+        industry={data.industry}
+        title={data.title}
+      />
+      {/* {jobs.map(job => {
         const { title } = job.data
-        console.log({ title })
         return <JobCard key={title} title={title} />
-      })}
+      })} */}
     </Box>
   )
 }
