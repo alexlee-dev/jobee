@@ -4,13 +4,16 @@ import { connect } from 'react-redux'
 import { Button } from 'grommet'
 import { setCurrentScreen } from '../redux/actions/app'
 
-const ActionBarButton = ({ app, dispatch, icon, screen }) => {
+export const ActionBarButton = ({ app, dispatch, icon, screen }) => {
   const { currentScreen } = app
   const Icon = icon
+  const handleButtonClick = () => {
+    dispatch(setCurrentScreen(screen))
+  }
   return (
     <Button
       icon={<Icon color={currentScreen === screen && 'brand'} />}
-      onClick={() => dispatch(setCurrentScreen(screen))}
+      onClick={handleButtonClick}
       style={{ padding: '0' }}
     />
   )

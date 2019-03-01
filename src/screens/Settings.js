@@ -5,7 +5,7 @@ import SettingsOption from '../components/SettingsOption'
 import SettingsOptionProfile from '../components/SettingsOptionProfile'
 import { signOut } from '../firebase/auth'
 
-const Settings = () => {
+export const Settings = () => {
   return (
     <Box fill>
       <SettingsOptionProfile />

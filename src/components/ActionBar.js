@@ -5,7 +5,7 @@ import { Box } from 'grommet'
 import { SettingsOption, Sort, User } from 'grommet-icons'
 import ActionBarButton from './ActionBarButton'
 
-const ActionBar = ({ app }) => {
+export const ActionBar = ({ app }) => {
   const { isLoading } = app
   return (
     <Box

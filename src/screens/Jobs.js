@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Box } from 'grommet'
 import JobCard from '../components/JobCard'
 
-const Jobs = ({ firebase }) => {
+export const Jobs = ({ firebase }) => {
   const { jobs } = firebase.database
   console.log({ jobs })
   return (
@@ -12,7 +12,7 @@ const Jobs = ({ firebase }) => {
       {jobs.map(job => {
         const { title } = job.data
         console.log({ title })
-        return <JobCard title={title} />
+        return <JobCard key={title} title={title} />
       })}
     </Box>
   )
