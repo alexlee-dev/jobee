@@ -8,6 +8,7 @@ export const GET_DATABASE = 'GET_DATABASE'
 export const SET_DATABASE = 'SET_DATABASE'
 export const GET_USER_PREFERENCES = 'GET_USER_PREFERENCES'
 export const SET_USER_PREFERENCES = 'SET_USER_PREFERENCES'
+export const REMOVE_FROM_WATCHLIST = 'REMOVE_FROM_WATCHLIST'
 
 // * Action Generators
 export const setHasCheckedForUser = hasCheckedForUser => ({
@@ -22,6 +23,10 @@ export const setDatabase = (collectionName, dataArray) => ({
 export const setUserPreferences = userPreferences => ({
   type: SET_USER_PREFERENCES,
   payload: { userPreferences }
+})
+export const removeFromWatchlist = documentId => ({
+  type: REMOVE_FROM_WATCHLIST,
+  payload: { documentId }
 })
 
 ///////////////////

@@ -5,9 +5,8 @@ import { Box } from 'grommet'
 import JobCard from '../components/JobCard'
 
 export const Jobs = ({ firebase }) => {
-  const { jobs } = firebase.database
-  const { data } = jobs[0]
-  console.log({ jobs })
+  const { watchlist } = firebase.user.preferences
+  const { data } = watchlist[0]
   return (
     <Box align="center" fill gap="medium" overflow="auto">
       <JobCard

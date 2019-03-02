@@ -14,6 +14,16 @@ const firebaseDefaultState = {
 
 export default (state = firebaseDefaultState, action) => {
   switch (action.type) {
+    case 'REMOVE_FROM_WATCHLIST':
+      const { documentId } = action.payload
+      return Object.assign({}, state, {
+        user: {
+          ...state.user,
+          preferences: state.preferences.filter(
+            document => document.id !== documentId
+          )
+        }
+      })
     case 'SET_DATABASE':
       const { collectionName, dataArray } = action.payload
       return Object.assign({}, state, {
