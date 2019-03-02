@@ -34,11 +34,9 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "align": "center",
-      "children": Array [
-        <JobCard
-          title="Job 1"
-        />,
-      ],
+      "children": <JobCard
+        title="Job 1"
+      />,
       "direction": "column",
       "fill": true,
       "gap": "medium",
@@ -877,19 +875,24 @@ ShallowWrapper {
       },
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": "Job 1",
-        "nodeType": "function",
-        "props": Object {
-          "title": "Job 1",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "addressCountry": undefined,
+        "addressLocality": undefined,
+        "addressRegion": undefined,
+        "datePosted": undefined,
+        "description": undefined,
+        "employmentType": undefined,
+        "industry": undefined,
+        "title": "Job 1",
       },
-    ],
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
     "type": Object {
       "availableAt": Array [
         Object {
@@ -1406,11 +1409,9 @@ string",
       "nodeType": "function",
       "props": Object {
         "align": "center",
-        "children": Array [
-          <JobCard
-            title="Job 1"
-          />,
-        ],
+        "children": <JobCard
+          title="Job 1"
+        />,
         "direction": "column",
         "fill": true,
         "gap": "medium",
@@ -2249,19 +2250,24 @@ string",
         },
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": "Job 1",
-          "nodeType": "function",
-          "props": Object {
-            "title": "Job 1",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "addressCountry": undefined,
+          "addressLocality": undefined,
+          "addressRegion": undefined,
+          "datePosted": undefined,
+          "description": undefined,
+          "employmentType": undefined,
+          "industry": undefined,
+          "title": "Job 1",
         },
-      ],
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       "type": Object {
         "availableAt": Array [
           Object {

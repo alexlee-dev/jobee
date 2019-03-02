@@ -1,27 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Box, Heading, Image } from 'grommet'
+import { Box, Heading } from 'grommet'
 
 export const NavBar = ({ app, firebase }) => {
   const { currentScreen } = app
   const screenName =
     currentScreen.charAt(0).toUpperCase() + currentScreen.slice(1)
-  const { photoURL } = firebase.user
   return (
     <Box
       align="center"
-      background="light-3"
       direction="row"
       gap="medium"
       height="60px"
-      justify="start"
-      pad="medium"
+      justify="between"
+      pad="large"
     >
-      <Box height="34px" round="full" width="34px">
-        <Image fit="contain" src={photoURL} style={{ borderRadius: '100%' }} />
-      </Box>
-      <Heading level="2" margin="none">
+      <Heading color="light-1" level="2" margin="none">
         {screenName}
       </Heading>
     </Box>

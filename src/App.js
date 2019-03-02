@@ -20,7 +20,7 @@ export const App = ({ app, firebase }) => {
     return <SignInScreen />
   } else {
     return (
-      <Box fill justify="between">
+      <Box className="shell" fill justify="between">
         <NavBar />
         <Screen />
         <ActionBar />
