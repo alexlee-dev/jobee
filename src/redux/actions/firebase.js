@@ -9,6 +9,7 @@ export const SET_DATABASE = 'SET_DATABASE'
 export const GET_USER_PREFERENCES = 'GET_USER_PREFERENCES'
 export const SET_USER_PREFERENCES = 'SET_USER_PREFERENCES'
 export const REMOVE_FROM_WATCHLIST = 'REMOVE_FROM_WATCHLIST'
+export const SET_WATCHLIST = 'SET_WATCHLIST'
 
 // * Action Generators
 export const setHasCheckedForUser = hasCheckedForUser => ({
@@ -23,6 +24,11 @@ export const setDatabase = (collectionName, dataArray) => ({
 export const setUserPreferences = userPreferences => ({
   type: SET_USER_PREFERENCES,
   payload: { userPreferences }
+})
+
+export const setWatchlist = watchlist => ({
+  type: SET_WATCHLIST,
+  payload: { watchlist }
 })
 export const removeFromWatchlist = documentId => ({
   type: REMOVE_FROM_WATCHLIST,
@@ -55,12 +61,44 @@ const getAllDocumentsFromCollection = collectionName => {
   })
 }
 
+const getSingleDocumentFromCollection = (collectionName, documentId) => {
+  return new Promise((resolve, reject) => {
+    const db = database
+    const docRef = db.collection(collectionName).doc(documentId)
+    docRef.get().then(doc => {
+      if (doc.exists) {
+        resolve(doc.data())
+      } else {
+        reject({ reason: 'Document does not exist.' })
+      }
+    })
+  })
+}
+
 const setDocument = (collectionName, documentId, data) => {
   return new Promise((resolve, reject) => {
     const db = database
     db.collection(collectionName)
       .doc(documentId)
       .set(data)
+      .then(() => resolve())
+      .catch(error => reject(error))
+  })
+}
+
+const updateFieldInDocument = (
+  collectionName,
+  documentId,
+  fieldToUpdate,
+  data
+) => {
+  return new Promise((resolve, reject) => {
+    const db = database
+    db.collection(collectionName)
+      .doc(documentId)
+      .update({
+        [fieldToUpdate]: data
+      })
       .then(() => resolve())
       .catch(error => reject(error))
   })
@@ -109,5 +147,27 @@ export const getAndSetStartData = uid => {
           })
           .catch(error => console.error(error))
       })
+  }
+}
+
+export const removeJobFromWatchlist = (uid, documentId) => {
+  return dispatch => {
+    return getSingleDocumentFromCollection('users', uid)
+      .then(userObj => {
+        const { watchlist } = userObj
+        const newWatchlist = watchlist.filter(
+          documentObj => documentObj.id !== documentId
+        )
+        updateFieldInDocument('users', uid, 'watchlist', newWatchlist)
+          .then(() => {
+            dispatch(setLoadingState(false))
+            dispatch(setWatchlist(newWatchlist))
+          })
+          .catch(error => {
+            console.error(error)
+            dispatch(setLoadingState(false))
+          })
+      })
+      .catch(error => console.error(error))
   }
 }

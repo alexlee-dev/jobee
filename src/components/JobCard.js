@@ -10,10 +10,13 @@ export const JobCard = ({
   addressRegion,
   datePosted,
   description,
+  documentId,
   employmentType,
   industry,
   title
 }) => {
+  let finalEmploymentType = employmentType
+  if (!employmentType) finalEmploymentType = 'Inquire within' 
   let finalTitle = []
   if (title && title.includes(',')) finalTitle = title.split(',')
   let location
@@ -35,7 +38,8 @@ export const JobCard = ({
       <JobCardHeader location={location} />
       <JobCardBody
         datePosted={datePosted}
-        employmentType={employmentType}
+        documentId={documentId}
+        employmentType={finalEmploymentType}
         finalTitle={finalTitle}
         industry={industry}
         title={title}
@@ -48,11 +52,12 @@ JobCard.propTypes = {
   addressCountry: PropTypes.string,
   addressLocality: PropTypes.string,
   addressRegion: PropTypes.string,
-  datePosted: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  employmentType: PropTypes.string.isRequired,
-  industry: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  datePosted: PropTypes.string,
+  description: PropTypes.string,
+  documentId: PropTypes.string,
+  employmentType: PropTypes.string,
+  industry: PropTypes.string,
+  title: PropTypes.string
 }
 
 export default JobCard

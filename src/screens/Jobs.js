@@ -6,7 +6,7 @@ import JobCard from '../components/JobCard'
 
 export const Jobs = ({ firebase }) => {
   const { watchlist } = firebase.user.preferences
-  const { data } = watchlist[0]
+  const { data, id } = watchlist[0]
   return (
     <Box align="center" fill gap="medium" overflow="auto">
       <JobCard
@@ -15,14 +15,11 @@ export const Jobs = ({ firebase }) => {
         addressRegion={data.addressRegion}
         datePosted={data.datePosted}
         description={data.description}
+        documentId={id}
         employmentType={data.employmentType}
         industry={data.industry}
         title={data.title}
       />
-      {/* {jobs.map(job => {
-        const { title } = job.data
-        return <JobCard key={title} title={title} />
-      })} */}
     </Box>
   )
 }

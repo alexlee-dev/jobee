@@ -19,9 +19,12 @@ export default (state = firebaseDefaultState, action) => {
       return Object.assign({}, state, {
         user: {
           ...state.user,
-          preferences: state.preferences.filter(
-            document => document.id !== documentId
-          )
+          preferences: {
+            ...state.user.preferences,
+            watchlist: state.user.preferences.watchlist.filter(
+              documentObj => documentObj.id !== documentId
+            )
+          }
         }
       })
     case 'SET_DATABASE':
@@ -40,6 +43,17 @@ export default (state = firebaseDefaultState, action) => {
     case 'SET_HAS_CHECKED_FOR_USER':
       const { hasCheckedForUser } = action.payload
       return Object.assign({}, state, { hasCheckedForUser })
+    case 'SET_WATCHLIST':
+      const { watchlist } = action.payload
+      return Object.assign({}, state, {
+        user: {
+          ...state.user,
+          preferences: {
+            ...state.user.preferences,
+            watchlist
+          }
+        }
+      })
     default:
       return state
   }
