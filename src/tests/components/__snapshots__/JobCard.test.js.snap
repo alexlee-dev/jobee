@@ -2538,9 +2538,7 @@ ShallowWrapper {
               className="location-tag"
               color="white"
               level={1}
-            >
-              , 
-            </Text>
+            />
           </Stack>
         </ForwardRef>,
         <ForwardRef
@@ -10986,9 +10984,7 @@ ShallowWrapper {
               className="location-tag"
               color="white"
               level={1}
-            >
-              , 
-            </Text>
+            />
           </Stack>,
           "direction": "column",
           "height": "200px",
@@ -13511,9 +13507,7 @@ ShallowWrapper {
                 className="location-tag"
                 color="white"
                 level={1}
-              >
-                , 
-              </Text>,
+              />,
             ],
           },
           "ref": null,
@@ -16661,21 +16655,13 @@ string",
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": Array [
-                  undefined,
-                  ", ",
-                  undefined,
-                ],
+                "children": undefined,
                 "className": "location-tag",
                 "color": "white",
                 "level": 1,
               },
               "ref": null,
-              "rendered": Array [
-                undefined,
-                ", ",
-                undefined,
-              ],
+              "rendered": null,
               "type": [Function],
             },
           ],
@@ -39003,9 +38989,7 @@ string",
                 className="location-tag"
                 color="white"
                 level={1}
-              >
-                , 
-              </Text>
+              />
             </Stack>
           </ForwardRef>,
           <ForwardRef
@@ -47451,9 +47435,7 @@ string",
                 className="location-tag"
                 color="white"
                 level={1}
-              >
-                , 
-              </Text>
+              />
             </Stack>,
             "direction": "column",
             "height": "200px",
@@ -49976,9 +49958,7 @@ string",
                   className="location-tag"
                   color="white"
                   level={1}
-                >
-                  , 
-                </Text>,
+                />,
               ],
             },
             "ref": null,
@@ -53126,21 +53106,13 @@ string",
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": Array [
-                    undefined,
-                    ", ",
-                    undefined,
-                  ],
+                  "children": undefined,
                   "className": "location-tag",
                   "color": "white",
                   "level": 1,
                 },
                 "ref": null,
-                "rendered": Array [
-                  undefined,
-                  ", ",
-                  undefined,
-                ],
+                "rendered": null,
                 "type": [Function],
               },
             ],

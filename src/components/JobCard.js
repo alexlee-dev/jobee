@@ -5,6 +5,7 @@ import { Checkmark, Clear } from 'grommet-icons'
 import 'react-awesome-button/dist/styles.css'
 
 export const JobCard = ({
+  addressCountry,
   addressLocality,
   addressRegion,
   datePosted,
@@ -15,6 +16,13 @@ export const JobCard = ({
 }) => {
   let finalTitle = []
   if (title && title.includes(',')) finalTitle = title.split(',')
+  let location
+  if (addressLocality && addressRegion) {
+    location = `${addressLocality}, ${addressRegion}`
+  } else {
+    location = addressCountry
+  }
+  
   return (
     <Box
       background="#ecf0f1"
@@ -34,7 +42,7 @@ export const JobCard = ({
             />
           </Box>
           <Text className="location-tag" color="white">
-            {addressLocality}, {addressRegion}
+            {location}
           </Text>
         </Stack>
       </Box>

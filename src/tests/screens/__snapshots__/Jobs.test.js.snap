@@ -880,6 +880,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "addressCountry": undefined,
         "addressLocality": undefined,
         "addressRegion": undefined,
         "datePosted": undefined,
@@ -2254,6 +2255,7 @@ string",
         "key": undefined,
         "nodeType": "function",
         "props": Object {
+          "addressCountry": undefined,
           "addressLocality": undefined,
           "addressRegion": undefined,
           "datePosted": undefined,

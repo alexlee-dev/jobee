@@ -11,6 +11,7 @@ export const Jobs = ({ firebase }) => {
   return (
     <Box align="center" fill gap="medium" overflow="auto">
       <JobCard
+        addressCountry={data.addressCountry}
         addressLocality={data.addressLocality}
         addressRegion={data.addressRegion}
         datePosted={data.datePosted}
