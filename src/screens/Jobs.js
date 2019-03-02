@@ -5,9 +5,10 @@ import { Box } from 'grommet'
 import JobCard from '../components/JobCard'
 
 export const Jobs = ({ firebase }) => {
+  const { watchlist, watchlistIndex } = firebase.user.preferences
   const { jobs } = firebase.database
-  const { data } = jobs[0]
-  console.log({ jobs })
+  const id = watchlist[watchlistIndex]
+  const { data } = jobs.find(obj => obj.id === id)
   return (
     <Box align="center" fill gap="medium" overflow="auto">
       <JobCard
@@ -16,14 +17,11 @@ export const Jobs = ({ firebase }) => {
         addressRegion={data.addressRegion}
         datePosted={data.datePosted}
         description={data.description}
+        documentId={id}
         employmentType={data.employmentType}
         industry={data.industry}
         title={data.title}
       />
-      {/* {jobs.map(job => {
-        const { title } = job.data
-        return <JobCard key={title} title={title} />
-      })} */}
     </Box>
   )
 }

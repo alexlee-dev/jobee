@@ -6,6 +6,7 @@ import JobCardButtons from './JobCardButtons'
 
 const JobCardBody = ({
   datePosted,
+  documentId,
   employmentType,
   finalTitle,
   industry,
@@ -38,13 +39,14 @@ const JobCardBody = ({
         plain
         style={{ textDecoration: 'underline' }}
       />
-      <JobCardButtons />
+      <JobCardButtons documentId={documentId} />
     </Box>
   )
 }
 
 JobCardBody.propTypes = {
   datePosted: PropTypes.string.isRequired,
+  documentId: PropTypes.string.isRequired,
   employmentType: PropTypes.string.isRequired,
   finalTitle: PropTypes.array,
   industry: PropTypes.string.isRequired,

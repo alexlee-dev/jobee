@@ -7,13 +7,29 @@ const firebaseDefaultState = {
     displayName: null,
     email: null,
     photoURL: null,
-    preferences: null,
+    preferences: {
+      watchlist: [],
+      watchlistIndex: 0
+    },
     uid: null
   }
 }
 
 export default (state = firebaseDefaultState, action) => {
   switch (action.type) {
+    case 'REMOVE_FROM_WATCHLIST':
+      const { documentId } = action.payload
+      return Object.assign({}, state, {
+        user: {
+          ...state.user,
+          preferences: {
+            ...state.user.preferences,
+            watchlist: state.user.preferences.watchlist.filter(
+              documentObj => documentObj.id !== documentId
+            )
+          }
+        }
+      })
     case 'SET_DATABASE':
       const { collectionName, dataArray } = action.payload
       return Object.assign({}, state, {
@@ -27,9 +43,44 @@ export default (state = firebaseDefaultState, action) => {
       return Object.assign({}, state, {
         user: { ...state.user, preferences: userPreferences }
       })
+    case 'SET_USER_PREFERENCE':
+      const { preferenceKey, data } = action.payload
+      console.log('here with: ')
+      console.log({ preferenceKey, data })
+      return Object.assign({}, state, {
+        user: {
+          ...state.user,
+          preferences: {
+            ...state.user.preferences,
+            [preferenceKey]: data
+          }
+        }
+      })
     case 'SET_HAS_CHECKED_FOR_USER':
       const { hasCheckedForUser } = action.payload
       return Object.assign({}, state, { hasCheckedForUser })
+    case 'SET_WATCHLIST':
+      const { watchlist } = action.payload
+      return Object.assign({}, state, {
+        user: {
+          ...state.user,
+          preferences: {
+            ...state.user.preferences,
+            watchlist
+          }
+        }
+      })
+    case 'SET_WATCHLIST_INDEX':
+      const { watchlistIndex } = action.payload
+      return Object.assign({}, state, {
+        user: {
+          ...state.user,
+          preferences: {
+            ...state.user.preferences,
+            watchlistIndex
+          }
+        }
+      })
     default:
       return state
   }
