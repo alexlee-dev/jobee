@@ -10,6 +10,7 @@ export const GET_USER_PREFERENCES = 'GET_USER_PREFERENCES'
 export const SET_USER_PREFERENCES = 'SET_USER_PREFERENCES'
 export const REMOVE_FROM_WATCHLIST = 'REMOVE_FROM_WATCHLIST'
 export const SET_WATCHLIST = 'SET_WATCHLIST'
+export const SET_WATCHLIST_INDEX = 'SET_WATCHLIST_INDEX'
 
 // * Action Generators
 export const setHasCheckedForUser = hasCheckedForUser => ({
@@ -30,16 +31,20 @@ export const setWatchlist = watchlist => ({
   type: SET_WATCHLIST,
   payload: { watchlist }
 })
+export const setWatchlistIndex = watchlistIndex => ({
+  type: SET_WATCHLIST_INDEX,
+  payload: { watchlistIndex }
+})
 export const removeFromWatchlist = documentId => ({
   type: REMOVE_FROM_WATCHLIST,
   payload: { documentId }
 })
-
 ///////////////////
 
 // * Promises
 const getAllDocumentsFromCollection = collectionName => {
   return new Promise((resolve, reject) => {
+    console.log(`Getting all documents from ${collectionName} ...`)
     const db = database
     db.collection(collectionName)
       .get()
@@ -52,9 +57,14 @@ const getAllDocumentsFromCollection = collectionName => {
           }
           documentArray.push(documentObject)
         })
+        console.log(`✅ Successfully got all documents from ${collectionName}.`)
+        console.log(`Resolving with: ${JSON.stringify(documentArray, null, 2)}`)
         resolve(documentArray)
       })
       .catch(error => {
+        console.log(
+          `❗ Error while getting all documents from ${collectionName}.`
+        )
         console.log(error)
         reject(error)
       })
@@ -63,12 +73,18 @@ const getAllDocumentsFromCollection = collectionName => {
 
 const getSingleDocumentFromCollection = (collectionName, documentId) => {
   return new Promise((resolve, reject) => {
+    console.log(`Getting ${documentId} from ${collectionName} ...`)
     const db = database
     const docRef = db.collection(collectionName).doc(documentId)
     docRef.get().then(doc => {
       if (doc.exists) {
+        console.log(`✅ Successfully got ${documentId} from ${collectionName}.`)
+        console.log(`Resolving with: ${JSON.stringify(doc.data(), null, 2)}`)
         resolve(doc.data())
       } else {
+        console.log(
+          `❗ Error while getting ${documentId} from ${collectionName}`
+        )
         reject({ reason: 'Document does not exist.' })
       }
     })
@@ -77,12 +93,34 @@ const getSingleDocumentFromCollection = (collectionName, documentId) => {
 
 const setDocument = (collectionName, documentId, data) => {
   return new Promise((resolve, reject) => {
+    console.log(
+      `Setting ${documentId} in ${collectionName} as: ${JSON.stringify(
+        data,
+        null,
+        2
+      )} ...`
+    )
     const db = database
     db.collection(collectionName)
       .doc(documentId)
       .set(data)
-      .then(() => resolve())
-      .catch(error => reject(error))
+      .then(() => {
+        console.log(
+          `✅ Successfully set ${documentId} in ${collectionName} as ${JSON.stringify(
+            data,
+            null,
+            2
+          )}.`
+        )
+        console.log(`Resolving.`)
+        resolve()
+      })
+      .catch(error => {
+        console.log(
+          `❗ Error while setting ${documentId} in ${collectionName} as ${data}.`
+        )
+        reject(error)
+      })
   })
 }
 
@@ -93,14 +131,28 @@ const updateFieldInDocument = (
   data
 ) => {
   return new Promise((resolve, reject) => {
+    console.log(
+      `Updating ${fieldToUpdate} in ${documentId} of ${collectionName} with ${data} ...`
+    )
     const db = database
     db.collection(collectionName)
       .doc(documentId)
       .update({
         [fieldToUpdate]: data
       })
-      .then(() => resolve())
-      .catch(error => reject(error))
+      .then(() => {
+        console.log(
+          `✅ Successfully updated ${fieldToUpdate} in ${documentId} of ${collectionName} with ${data}.`
+        )
+        console.log('Resolving.')
+        resolve()
+      })
+      .catch(error => {
+        console.log(
+          `❗ Error while updating ${fieldToUpdate} in ${documentId} of ${collectionName} with ${data}.`
+        )
+        reject(error)
+      })
   })
 }
 
@@ -131,7 +183,14 @@ export const getAndSetStartData = uid => {
         // * Add user to /users
         getAllDocumentsFromCollection('jobs')
           .then(jobArray => {
-            const initialPreferences = { watchlist: jobArray }
+            const arrayOfIds = jobArray.map(({ id }) => {
+              return id
+            })
+            console.log({ arrayOfIds })
+            const initialPreferences = {
+              watchlist: arrayOfIds,
+              watchlistIndex: 0
+            }
             setDocument('users', uid, initialPreferences)
               .then(() => {
                 dispatch(setUserPreferences(initialPreferences))
@@ -155,13 +214,13 @@ export const removeJobFromWatchlist = (uid, documentId) => {
     return getSingleDocumentFromCollection('users', uid)
       .then(userObj => {
         const { watchlist } = userObj
-        const newWatchlist = watchlist.filter(
-          documentObj => documentObj.id !== documentId
-        )
+        const newWatchlist = watchlist.filter(jobId => jobId !== documentId)
+        console.log(`Old watchlist length: ${watchlist.length}`)
+        console.log(`New watchlist length: ${newWatchlist.length}`)
         updateFieldInDocument('users', uid, 'watchlist', newWatchlist)
           .then(() => {
-            dispatch(setLoadingState(false))
             dispatch(setWatchlist(newWatchlist))
+            dispatch(setLoadingState(false))
           })
           .catch(error => {
             console.error(error)
@@ -169,5 +228,25 @@ export const removeJobFromWatchlist = (uid, documentId) => {
           })
       })
       .catch(error => console.error(error))
+  }
+}
+
+export const continueWatchingJob = (uid, currentWatchlistIndex) => {
+  const newWatchlistIndex = currentWatchlistIndex + 1
+  return dispatch => {
+    return updateFieldInDocument(
+      'users',
+      uid,
+      'watchlistIndex',
+      newWatchlistIndex
+    )
+      .then(() => {
+        dispatch(setWatchlistIndex(newWatchlistIndex))
+        dispatch(setLoadingState(false))
+      })
+      .catch(error => {
+        console.error(error)
+        dispatch(setLoadingState(false))
+      })
   }
 }

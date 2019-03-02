@@ -3,11 +3,19 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Button } from 'grommet'
 import { Checkmark, Clear } from 'grommet-icons'
-import { removeJobFromWatchlist } from '../redux/actions/firebase'
-import { setLoadingState } from '../redux/actions/app';
+import {
+  removeJobFromWatchlist,
+  continueWatchingJob
+} from '../redux/actions/firebase'
+import { setLoadingState } from '../redux/actions/app'
 
 const JobCardButtons = ({ dispatch, documentId, firebase }) => {
-  const { uid } = firebase.user
+  const { preferences, uid } = firebase.user
+  const { watchlistIndex } = preferences
+  const handleContinueWatching = () => {
+    dispatch(setLoadingState(true))
+    dispatch(continueWatchingJob(uid, watchlistIndex))
+  }
   const handleRemoveFromWatchlist = () => {
     dispatch(setLoadingState(true))
     dispatch(removeJobFromWatchlist(uid, documentId))
@@ -15,7 +23,7 @@ const JobCardButtons = ({ dispatch, documentId, firebase }) => {
 
   return (
     <Box align="center" direction="row" gap="large" justify="center">
-      <Button style={{ width: '50%' }}>
+      <Button onClick={handleContinueWatching} style={{ width: '50%' }}>
         <Box
           align="center"
           background="status-ok"
