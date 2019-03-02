@@ -6,7 +6,7 @@ describe('Redux Store', () => {
     firebase: {
       database: { jobs: [] },
       hasCheckedForUser: false,
-      user: { displayName: null, email: null, photoURL: null }
+      user: { displayName: null, email: null, photoURL: null, preferences: null, uid: null }
     }
   }
 
