@@ -2,31 +2,27 @@ import { database } from '../../firebase/firestore'
 import { setLoadingState, setCurrentScreen } from './app'
 
 // * Action Types
-export const SET_USER = 'SET_USER'
-export const SET_HAS_CHECKED_FOR_USER = 'SET_HAS_CHECKED_FOR_USER'
-export const GET_DATABASE = 'GET_DATABASE'
 export const SET_DATABASE = 'SET_DATABASE'
-export const GET_USER_PREFERENCES = 'GET_USER_PREFERENCES'
+export const SET_HAS_CHECKED_FOR_USER = 'SET_HAS_CHECKED_FOR_USER'
+export const SET_USER = 'SET_USER'
 export const SET_USER_PREFERENCES = 'SET_USER_PREFERENCES'
-export const REMOVE_FROM_WATCHLIST = 'REMOVE_FROM_WATCHLIST'
 export const SET_WATCHLIST = 'SET_WATCHLIST'
 export const SET_WATCHLIST_INDEX = 'SET_WATCHLIST_INDEX'
 
 // * Action Generators
+export const setDatabase = (collectionName, dataArray) => ({
+  type: SET_DATABASE,
+  payload: { collectionName, dataArray }
+})
 export const setHasCheckedForUser = hasCheckedForUser => ({
   type: SET_HAS_CHECKED_FOR_USER,
   payload: { hasCheckedForUser }
 })
 export const setUser = user => ({ type: SET_USER, payload: { user } })
-export const setDatabase = (collectionName, dataArray) => ({
-  type: SET_DATABASE,
-  payload: { collectionName, dataArray }
-})
 export const setUserPreferences = userPreferences => ({
   type: SET_USER_PREFERENCES,
   payload: { userPreferences }
 })
-
 export const setWatchlist = watchlist => ({
   type: SET_WATCHLIST,
   payload: { watchlist }
@@ -35,10 +31,7 @@ export const setWatchlistIndex = watchlistIndex => ({
   type: SET_WATCHLIST_INDEX,
   payload: { watchlistIndex }
 })
-export const removeFromWatchlist = documentId => ({
-  type: REMOVE_FROM_WATCHLIST,
-  payload: { documentId }
-})
+
 ///////////////////
 
 // * Promises
