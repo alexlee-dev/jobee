@@ -86,21 +86,21 @@ export const getAndSetStartData = uid => {
       .catch(() => {
         // * This is a a new user.
         // * Add user to /users
-        setDocument('users', uid, {})
-          .then(() => {
-            getAllDocumentsFromCollection('jobs')
-              .then(jobArray => {
-                dispatch(setUserPreferences({}))
+        getAllDocumentsFromCollection('jobs')
+          .then(jobArray => {
+            const initialPreferences = { watchlist: jobArray }
+            setDocument('users', uid, initialPreferences)
+              .then(() => {
+                dispatch(setUserPreferences(initialPreferences))
                 dispatch(setDatabase('jobs', jobArray))
                 dispatch(setCurrentScreen('jobs'))
                 dispatch(setLoadingState(false))
               })
-              .catch(error => {
-                console.warn(
-                  'Error while trying to get documents from database.'
-                )
-                console.error(error)
-              })
+              .catch(error => console.error(error))
+          })
+          .catch(error => {
+            console.warn('Error while trying to get documents from database.')
+            console.error(error)
           })
           .catch(error => console.error(error))
       })
