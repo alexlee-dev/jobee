@@ -2,7 +2,6 @@ import React from 'react'
 import { Box, Image, Text, Heading, Stack, Button } from 'grommet'
 import moment from 'moment'
 import { Checkmark, Clear } from 'grommet-icons'
-import { AwesomeButton } from 'react-awesome-button'
 import 'react-awesome-button/dist/styles.css'
 
 export const JobCard = ({
@@ -14,55 +13,62 @@ export const JobCard = ({
   industry,
   title
 }) => {
+  let finalTitle = []
+  if (title && title.includes(',')) finalTitle = title.split(',')
   return (
     <Box
       background="#ecf0f1"
       elevation="large"
       margin={{ top: 'medium' }}
-      width="90%"
+      round="medium"
+      style={{ maxHeight: '500px' }}
+      width="80%"
     >
       <Box height="200px">
         <Stack>
           <Box height="200px">
             <Image
+              className="round-top"
               fit="cover"
               src="https://images.pexels.com/photos/432361/pexels-photo-432361.jpeg?auto=compress"
             />
           </Box>
-          <Box
-            align="center"
-            background="dark-3"
-            justify="center"
-            margin="medium"
-            round="medium"
-            pad={{ horizontal: 'medium', vertical: 'small' }}
-            width="95px"
-          >
-            <Text>{moment(datePosted).format('MMM Do')}</Text>
-          </Box>
+          <Text className="location-tag" color="white">
+            {addressLocality}, {addressRegion}
+          </Text>
         </Stack>
       </Box>
       <Box pad="large">
         <Heading level="2" margin={{ top: 'none', bottom: 'small' }}>
-          {title}
+          {finalTitle[0] || title}
         </Heading>
-        <Text>
-          {addressLocality}, {addressRegion}
+        {finalTitle && (
+          <Heading level="3" margin={{ top: 'none', bottom: 'small' }}>
+            {finalTitle[1]}
+          </Heading>
+        )}
+        <Text size="small">
+          Posted on {moment(datePosted).format('MMM Do')}
         </Text>
-        <Text size="small">{industry}</Text>
-        <Text size="small">{employmentType}</Text>
-        <Button label="View Description" margin={{ top: 'large' }} plain />
-        <Box align="center" direction="row" gap="medium" justify="center">
-          <AwesomeButton type="primary">
-            <Box>
-              <Checkmark />
+        <Text size="small">
+          {industry} | {employmentType}
+        </Text>
+        <Button
+          label="View Description"
+          margin={{ bottom: 'medium', top: 'small' }}
+          plain
+        />
+        <Box align="center" direction="row" gap="xlarge" justify="center">
+          <Button>
+            <Box background="status-ok" pad="medium" round="full">
+              <Checkmark color="white" />
             </Box>
-          </AwesomeButton>
-          <AwesomeButton type="secondary">
-            <Box>
-              <Clear />
+          </Button>
+          <Button>
+            <Box background="status-critical" pad="medium" round="full">
+              <Clear color="white" />
             </Box>
-          </AwesomeButton>
+          </Button>
         </Box>
       </Box>
     </Box>

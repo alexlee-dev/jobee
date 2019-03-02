@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box } from 'grommet'
-import { SettingsOption, Sort, User } from 'grommet-icons'
+import { SettingsOption, Sort } from 'grommet-icons'
 import ActionBarButton from './ActionBarButton'
 
 export const ActionBar = ({ app }) => {
@@ -18,7 +18,6 @@ export const ActionBar = ({ app }) => {
       {!isLoading && (
         <React.Fragment>
           <ActionBarButton icon={Sort} screen="jobs" />
-          <ActionBarButton icon={User} screen="user" />
           <ActionBarButton icon={SettingsOption} screen="settings" />
         </React.Fragment>
       )}

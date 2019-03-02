@@ -1,5 +1,4 @@
 import Jobs from './screens/Jobs'
-import User from './screens/User'
 import Settings from './screens/Settings'
 
 export const emptyUser = {
@@ -10,6 +9,5 @@ export const emptyUser = {
 
 export const screens = {
   jobs: Jobs,
-  user: User,
   settings: Settings
 }

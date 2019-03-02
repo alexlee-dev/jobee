@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 } */
+
+.shell {
+  background-image: linear-gradient( 135deg, #F761A1 10%, #8C1BAB 100%);
+  transition: cubic-bezier(0.215, 0.610, 0.355, 5);
+}
+
+.round-top {
+  border-radius: 12px 12px 0 0;
+}
+
+.location-tag {
+  background: #777777;
+  border-radius: 12px;
+  margin: 15px;
+  padding: 5px 10px 5px 10px;
+  position: absolute;
+}

@@ -33,10 +33,6 @@ ShallowWrapper {
         />
         <Connect(ActionBarButton)
           icon={[Function]}
-          screen="user"
-        />
-        <Connect(ActionBarButton)
-          icon={[Function]}
           screen="settings"
         />
       </React.Fragment>,
@@ -889,10 +885,6 @@ ShallowWrapper {
           />,
           <Connect(ActionBarButton)
             icon={[Function]}
-            screen="user"
-          />,
-          <Connect(ActionBarButton)
-            icon={[Function]}
             screen="settings"
           />,
         ],
@@ -906,18 +898,6 @@ ShallowWrapper {
           "props": Object {
             "icon": [Function],
             "screen": "jobs",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "icon": [Function],
-            "screen": "user",
           },
           "ref": null,
           "rendered": null,
@@ -1458,10 +1438,6 @@ string",
           <Connect(ActionBarButton)
             icon={[Function]}
             screen="jobs"
-          />
-          <Connect(ActionBarButton)
-            icon={[Function]}
-            screen="user"
           />
           <Connect(ActionBarButton)
             icon={[Function]}
@@ -2317,10 +2293,6 @@ string",
             />,
             <Connect(ActionBarButton)
               icon={[Function]}
-              screen="user"
-            />,
-            <Connect(ActionBarButton)
-              icon={[Function]}
               screen="settings"
             />,
           ],
@@ -2334,18 +2306,6 @@ string",
             "props": Object {
               "icon": [Function],
               "screen": "jobs",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "icon": [Function],
-              "screen": "user",
             },
             "ref": null,
             "rendered": null,
