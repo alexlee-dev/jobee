@@ -7,7 +7,11 @@ describe('Constants', () => {
     expect(emptyUser).toEqual({
       displayName: null,
       email: null,
-      photoURL: null
+      photoURL: null,
+      preferences: {
+        watchlist: [],
+        watlistIndex: 0
+      }
     })
   })
 
