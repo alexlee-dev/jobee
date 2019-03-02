@@ -1,5 +1,5 @@
 import { database } from '../../firebase/firestore'
-import { setLoadingState } from './app'
+import { setLoadingState, setCurrentScreen } from './app'
 
 // * Action Types
 export const SET_USER = 'SET_USER'
@@ -24,6 +24,8 @@ export const setUserPreferences = userPreferences => ({
   payload: { userPreferences }
 })
 
+///////////////////
+
 // * Promises
 const getAllDocumentsFromCollection = collectionName => {
   return new Promise((resolve, reject) => {
@@ -41,43 +43,66 @@ const getAllDocumentsFromCollection = collectionName => {
         })
         resolve(documentArray)
       })
-      .catch(err => {
-        console.log(err)
-        reject(err)
+      .catch(error => {
+        console.log(error)
+        reject(error)
       })
   })
 }
 
-// * Thunk Actions
-export const getDatabase = () => {
-  return dispatch => {
-    return getAllDocumentsFromCollection('jobs')
-      .then(jobArray => {
-        dispatch(setDatabase('jobs', jobArray))
-        dispatch(setLoadingState(false))
-      })
-      .catch(err => {
-        console.warn('Error while trying to get documents from database.')
-        console.err(err)
-      })
-  }
+const setDocument = (collectionName, documentId, data) => {
+  return new Promise((resolve, reject) => {
+    const db = database
+    db.collection(collectionName)
+      .doc(documentId)
+      .set(data)
+      .then(() => resolve())
+      .catch(error => reject(error))
+  })
 }
 
-export const getUserPreferences = uid => {
+///////////////////
+
+// * Thunk Actions
+export const getAndSetStartData = uid => {
   return dispatch => {
     return getAllDocumentsFromCollection('users')
       .then(usersArray => {
-        console.log({ usersArray })
-        // * Check if uid matches the id of any user object
+        // * This is a current user
         const desiredUser = usersArray.find(userObj => userObj.id === uid)
         const userPreferences = desiredUser.data
-        // * Dispatch the userData to Redux
-        dispatch(setUserPreferences(userPreferences))
+        getAllDocumentsFromCollection('jobs')
+          .then(jobArray => {
+            dispatch(setUserPreferences(userPreferences))
+            dispatch(setDatabase('jobs', jobArray))
+            dispatch(setCurrentScreen('jobs'))
+            dispatch(setLoadingState(false))
+          })
+          .catch(error => {
+            console.warn('Error while trying to get documents from database.')
+            console.error(error)
+          })
       })
-      .catch(err => {
-        console.warn('Error while trying to get documents from database.')
-        console.err(err)
-        // TODO: Set up what to do if the uid does not match any document id in the database
+      .catch(() => {
+        // * This is a a new user.
+        // * Add user to /users
+        setDocument('users', uid, {})
+          .then(() => {
+            getAllDocumentsFromCollection('jobs')
+              .then(jobArray => {
+                dispatch(setUserPreferences({}))
+                dispatch(setDatabase('jobs', jobArray))
+                dispatch(setCurrentScreen('jobs'))
+                dispatch(setLoadingState(false))
+              })
+              .catch(error => {
+                console.warn(
+                  'Error while trying to get documents from database.'
+                )
+                console.error(error)
+              })
+          })
+          .catch(error => console.error(error))
       })
   }
 }

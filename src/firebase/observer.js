@@ -1,12 +1,11 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import store from '../redux/store/store'
-import { setLoadingState, setCurrentScreen } from '../redux/actions/app'
+import { setLoadingState } from '../redux/actions/app'
 import {
   setHasCheckedForUser,
   setUser,
-  getDatabase,
-  getUserPreferences
+  getAndSetStartData
 } from '../redux/actions/firebase'
 import { emptyUser } from '../constants'
 
@@ -19,11 +18,7 @@ firebase.auth().onAuthStateChanged(user => {
     const userInfo = { displayName, email, photoURL, preferences: null, uid }
     store.dispatch(setHasCheckedForUser(true))
     store.dispatch(setUser(userInfo))
-    // * Get or Create User Preferences Document
-    store.dispatch(getUserPreferences(uid))
-    // * Pull Jobs data from Firestore
-    store.dispatch(getDatabase())
-    store.dispatch(setCurrentScreen('jobs'))
+    store.dispatch(getAndSetStartData(uid))
   } else {
     // No user is signed in.
     console.log('User is not signed in.')
