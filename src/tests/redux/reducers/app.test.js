@@ -3,6 +3,8 @@ import appReducer from '../../../redux/reducers/app'
 describe('App Reducer', () => {
   const appDefaultState = {
     currentScreen: null,
+    editMode: false,
+    isDescriptionVisible: false,
     isLoading: true
   }
 
@@ -16,7 +18,12 @@ describe('App Reducer', () => {
       type: 'SET_CURRENT_SCREEN',
       payload: { currentScreen: 'jobs' }
     })
-    expect(state).toEqual({ currentScreen: 'jobs', isLoading: true })
+    expect(state).toEqual({
+      currentScreen: 'jobs',
+      editMode: false,
+      isDescriptionVisible: false,
+      isLoading: true
+    })
   })
 
   it('Should handle the setLoadingState action.', () => {
@@ -24,6 +31,11 @@ describe('App Reducer', () => {
       type: 'SET_LOADING_STATE',
       payload: { isLoading: false }
     })
-    expect(state).toEqual({ currentScreen: null, isLoading: false })
+    expect(state).toEqual({
+      currentScreen: null,
+      editMode: false,
+      isDescriptionVisible: false,
+      isLoading: false
+    })
   })
 })
