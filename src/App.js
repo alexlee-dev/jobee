@@ -4,16 +4,16 @@ import { connect } from 'react-redux'
 import './firebase/observer'
 import { Box } from 'grommet'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/pro-solid-svg-icons'
 import { far } from '@fortawesome/pro-regular-svg-icons'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { faBinoculars, faMapMarkerAlt } from '@fortawesome/pro-regular-svg-icons'
+import { faEllipsisV, faMapMarkerAlt } from '@fortawesome/pro-regular-svg-icons'
 import ActionBar from './components/ActionBar'
 import SignInScreen from './components/SignInScreen'
 import LoadingScreen from './components/LoadingScreen'
 import { screens } from './constants'
 import NavBar from './components/NavBar'
 
-library.add(far, faBinoculars, faCoffee, faMapMarkerAlt)
+library.add(far, fas, faEllipsisV, faMapMarkerAlt)
 
 export const App = ({ app, firebase }) => {
   const { currentScreen, isLoading } = app

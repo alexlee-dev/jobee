@@ -3,6 +3,7 @@
   "version": "0.6.0",
   "description": "Job Finder.",
   "dependencies": {
+    "@firebase/util": "^0.2.8",
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/pro-light-svg-icons": "^5.7.2",
@@ -18,8 +19,10 @@
     "grommet": "^2.4.0",
     "grommet-icons": "^4.2.0",
     "is-online": "^8.0.0",
+    "marked": "^0.6.1",
     "moment": "^2.24.0",
     "polished": "^3.0.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-awesome-button": "^6.0.0",
     "react-dom": "^16.8.2",

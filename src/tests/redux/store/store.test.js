@@ -2,7 +2,7 @@ import store from '../../../redux/store/store'
 
 describe('Redux Store', () => {
   const defaultState = {
-    app: { currentScreen: null, isLoading: true },
+    app: { currentScreen: null, editMode: false, isDescriptionVisible: false, isLoading: true },
     firebase: {
       database: { jobs: [] },
       hasCheckedForUser: false,
