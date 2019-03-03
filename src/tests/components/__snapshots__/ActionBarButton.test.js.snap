@@ -107,6 +107,7 @@ ShallowWrapper {
             "previous": [Function],
           },
         },
+        "chart": Object {},
         "checkBox": Object {
           "border": Object {
             "color": Object {
@@ -260,10 +261,20 @@ ShallowWrapper {
             "position": "inner",
             "side": "bottom",
           },
+          "content": Object {
+            "pad": Object {
+              "bottom": "small",
+              "horizontal": "small",
+            },
+          },
           "error": Object {
             "color": Object {
               "dark": "status-critical",
               "light": "status-critical",
+            },
+            "margin": Object {
+              "horizontal": "small",
+              "vertical": "xsmall",
             },
           },
           "help": Object {
@@ -271,8 +282,19 @@ ShallowWrapper {
               "dark": "dark-3",
               "light": "dark-3",
             },
+            "margin": Object {
+              "left": "small",
+            },
           },
-          "label": Object {},
+          "label": Object {
+            "margin": Object {
+              "horizontal": "small",
+              "vertical": "xsmall",
+            },
+          },
+          "margin": Object {
+            "bottom": "small",
+          },
         },
         "global": Object {
           "animation": Object {
@@ -720,11 +742,27 @@ ShallowWrapper {
             "height": "4px",
           },
         },
+        "rangeSelector": Object {
+          "background": Object {
+            "invert": Object {
+              "color": "light-4",
+            },
+          },
+        },
         "select": Object {
           "container": Object {},
           "control": Object {},
           "icons": Object {
             "down": [Function],
+          },
+          "options": Object {
+            "box": Object {
+              "align": "start",
+              "pad": "small",
+            },
+            "text": Object {
+              "margin": "none",
+            },
           },
           "step": 20,
         },
@@ -882,6 +920,9 @@ ShallowWrapper {
         },
       ],
       "description": "A button.",
+      "details": "You can provide a single function child that will be called with
+      'hover' and 'focus' keys. This allows you to customize the rendering
+      of the Button in those cases.",
       "intrinsicElement": "button",
       "name": "Button",
       "properties": Array [
@@ -1162,6 +1203,7 @@ submit",
               "previous": [Function],
             },
           },
+          "chart": Object {},
           "checkBox": Object {
             "border": Object {
               "color": Object {
@@ -1315,10 +1357,20 @@ submit",
               "position": "inner",
               "side": "bottom",
             },
+            "content": Object {
+              "pad": Object {
+                "bottom": "small",
+                "horizontal": "small",
+              },
+            },
             "error": Object {
               "color": Object {
                 "dark": "status-critical",
                 "light": "status-critical",
+              },
+              "margin": Object {
+                "horizontal": "small",
+                "vertical": "xsmall",
               },
             },
             "help": Object {
@@ -1326,8 +1378,19 @@ submit",
                 "dark": "dark-3",
                 "light": "dark-3",
               },
+              "margin": Object {
+                "left": "small",
+              },
             },
-            "label": Object {},
+            "label": Object {
+              "margin": Object {
+                "horizontal": "small",
+                "vertical": "xsmall",
+              },
+            },
+            "margin": Object {
+              "bottom": "small",
+            },
           },
           "global": Object {
             "animation": Object {
@@ -1775,11 +1838,27 @@ submit",
               "height": "4px",
             },
           },
+          "rangeSelector": Object {
+            "background": Object {
+              "invert": Object {
+                "color": "light-4",
+              },
+            },
+          },
           "select": Object {
             "container": Object {},
             "control": Object {},
             "icons": Object {
               "down": [Function],
+            },
+            "options": Object {
+              "box": Object {
+                "align": "start",
+                "pad": "small",
+              },
+              "text": Object {
+                "margin": "none",
+              },
             },
             "step": 20,
           },
@@ -1937,6 +2016,9 @@ submit",
           },
         ],
         "description": "A button.",
+        "details": "You can provide a single function child that will be called with
+      'hover' and 'focus' keys. This allows you to customize the rendering
+      of the Button in those cases.",
         "intrinsicElement": "button",
         "name": "Button",
         "properties": Array [

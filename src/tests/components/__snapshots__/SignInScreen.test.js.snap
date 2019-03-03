@@ -105,6 +105,7 @@ ShallowWrapper {
                 "previous": [Function],
               },
             },
+            "chart": Object {},
             "checkBox": Object {
               "border": Object {
                 "color": Object {
@@ -258,10 +259,20 @@ ShallowWrapper {
                 "position": "inner",
                 "side": "bottom",
               },
+              "content": Object {
+                "pad": Object {
+                  "bottom": "small",
+                  "horizontal": "small",
+                },
+              },
               "error": Object {
                 "color": Object {
                   "dark": "status-critical",
                   "light": "status-critical",
+                },
+                "margin": Object {
+                  "horizontal": "small",
+                  "vertical": "xsmall",
                 },
               },
               "help": Object {
@@ -269,8 +280,19 @@ ShallowWrapper {
                   "dark": "dark-3",
                   "light": "dark-3",
                 },
+                "margin": Object {
+                  "left": "small",
+                },
               },
-              "label": Object {},
+              "label": Object {
+                "margin": Object {
+                  "horizontal": "small",
+                  "vertical": "xsmall",
+                },
+              },
+              "margin": Object {
+                "bottom": "small",
+              },
             },
             "global": Object {
               "animation": Object {
@@ -718,11 +740,27 @@ ShallowWrapper {
                 "height": "4px",
               },
             },
+            "rangeSelector": Object {
+              "background": Object {
+                "invert": Object {
+                  "color": "light-4",
+                },
+              },
+            },
             "select": Object {
               "container": Object {},
               "control": Object {},
               "icons": Object {
                 "down": [Function],
+              },
+              "options": Object {
+                "box": Object {
+                  "align": "start",
+                  "pad": "small",
+                },
+                "text": Object {
+                  "margin": "none",
+                },
               },
               "step": 20,
             },
@@ -946,6 +984,7 @@ ShallowWrapper {
             "previous": [Function],
           },
         },
+        "chart": Object {},
         "checkBox": Object {
           "border": Object {
             "color": Object {
@@ -1099,10 +1138,20 @@ ShallowWrapper {
             "position": "inner",
             "side": "bottom",
           },
+          "content": Object {
+            "pad": Object {
+              "bottom": "small",
+              "horizontal": "small",
+            },
+          },
           "error": Object {
             "color": Object {
               "dark": "status-critical",
               "light": "status-critical",
+            },
+            "margin": Object {
+              "horizontal": "small",
+              "vertical": "xsmall",
             },
           },
           "help": Object {
@@ -1110,8 +1159,19 @@ ShallowWrapper {
               "dark": "dark-3",
               "light": "dark-3",
             },
+            "margin": Object {
+              "left": "small",
+            },
           },
-          "label": Object {},
+          "label": Object {
+            "margin": Object {
+              "horizontal": "small",
+              "vertical": "xsmall",
+            },
+          },
+          "margin": Object {
+            "bottom": "small",
+          },
         },
         "global": Object {
           "animation": Object {
@@ -1559,11 +1619,27 @@ ShallowWrapper {
             "height": "4px",
           },
         },
+        "rangeSelector": Object {
+          "background": Object {
+            "invert": Object {
+              "color": "light-4",
+            },
+          },
+        },
         "select": Object {
           "container": Object {},
           "control": Object {},
           "icons": Object {
             "down": [Function],
+          },
+          "options": Object {
+            "box": Object {
+              "align": "start",
+              "pad": "small",
+            },
+            "text": Object {
+              "margin": "none",
+            },
           },
           "step": 20,
         },
@@ -1795,6 +1871,7 @@ ShallowWrapper {
               "previous": [Function],
             },
           },
+          "chart": Object {},
           "checkBox": Object {
             "border": Object {
               "color": Object {
@@ -1948,10 +2025,20 @@ ShallowWrapper {
               "position": "inner",
               "side": "bottom",
             },
+            "content": Object {
+              "pad": Object {
+                "bottom": "small",
+                "horizontal": "small",
+              },
+            },
             "error": Object {
               "color": Object {
                 "dark": "status-critical",
                 "light": "status-critical",
+              },
+              "margin": Object {
+                "horizontal": "small",
+                "vertical": "xsmall",
               },
             },
             "help": Object {
@@ -1959,8 +2046,19 @@ ShallowWrapper {
                 "dark": "dark-3",
                 "light": "dark-3",
               },
+              "margin": Object {
+                "left": "small",
+              },
             },
-            "label": Object {},
+            "label": Object {
+              "margin": Object {
+                "horizontal": "small",
+                "vertical": "xsmall",
+              },
+            },
+            "margin": Object {
+              "bottom": "small",
+            },
           },
           "global": Object {
             "animation": Object {
@@ -2408,11 +2506,27 @@ ShallowWrapper {
               "height": "4px",
             },
           },
+          "rangeSelector": Object {
+            "background": Object {
+              "invert": Object {
+                "color": "light-4",
+              },
+            },
+          },
           "select": Object {
             "container": Object {},
             "control": Object {},
             "icons": Object {
               "down": [Function],
+            },
+            "options": Object {
+              "box": Object {
+                "align": "start",
+                "pad": "small",
+              },
+              "text": Object {
+                "margin": "none",
+              },
             },
             "step": 20,
           },
@@ -2786,6 +2900,14 @@ zoomOut
     medium
     strong
     boolean,
+  repeat: 
+    no-repeat
+    repeat
+    string,
+  size: 
+    cover
+    contain
+    string,
   light: string
 }",
             "name": "background",
@@ -2798,6 +2920,7 @@ small
 medium
 large
 xlarge
+xxlarge
 full
 1/2
 1/3
@@ -2897,7 +3020,8 @@ boolean",
             "description": "The amount of spacing between child elements. This
         should not be used in conjunction with 'wrap' as the gap elements
         will not wrap gracefully.",
-            "format": "xsmall
+            "format": "xxsmall
+xsmall
 small
 medium
 large
@@ -2907,22 +3031,26 @@ string",
           },
           Object {
             "description": "A fixed height.",
-            "format": "xsmall
+            "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
             "name": "height",
           },
           Object {
+            "defaultValue": "stretch",
             "description": "How to align the contents along the main axis.",
-            "format": "start
-center
+            "format": "around
 between
-around
+center
+end
 evenly
-end",
+start
+stretch",
             "name": "justify",
           },
           Object {
@@ -3063,11 +3191,13 @@ of indicating the DOM tag via the 'as' property.",
           },
           Object {
             "description": "A fixed width.",
-            "format": "xsmall
+            "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
             "name": "width",
           },
@@ -3295,6 +3425,14 @@ zoomOut
     medium
     strong
     boolean,
+  repeat: 
+    no-repeat
+    repeat
+    string,
+  size: 
+    cover
+    contain
+    string,
   light: string
 }",
           "name": "background",
@@ -3307,6 +3445,7 @@ small
 medium
 large
 xlarge
+xxlarge
 full
 1/2
 1/3
@@ -3406,7 +3545,8 @@ boolean",
           "description": "The amount of spacing between child elements. This
         should not be used in conjunction with 'wrap' as the gap elements
         will not wrap gracefully.",
-          "format": "xsmall
+          "format": "xxsmall
+xsmall
 small
 medium
 large
@@ -3416,22 +3556,26 @@ string",
         },
         Object {
           "description": "A fixed height.",
-          "format": "xsmall
+          "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
           "name": "height",
         },
         Object {
+          "defaultValue": "stretch",
           "description": "How to align the contents along the main axis.",
-          "format": "start
-center
+          "format": "around
 between
-around
+center
+end
 evenly
-end",
+start
+stretch",
           "name": "justify",
         },
         Object {
@@ -3572,11 +3716,13 @@ of indicating the DOM tag via the 'as' property.",
         },
         Object {
           "description": "A fixed width.",
-          "format": "xsmall
+          "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
           "name": "width",
         },
@@ -3685,6 +3831,7 @@ string",
                   "previous": [Function],
                 },
               },
+              "chart": Object {},
               "checkBox": Object {
                 "border": Object {
                   "color": Object {
@@ -3838,10 +3985,20 @@ string",
                   "position": "inner",
                   "side": "bottom",
                 },
+                "content": Object {
+                  "pad": Object {
+                    "bottom": "small",
+                    "horizontal": "small",
+                  },
+                },
                 "error": Object {
                   "color": Object {
                     "dark": "status-critical",
                     "light": "status-critical",
+                  },
+                  "margin": Object {
+                    "horizontal": "small",
+                    "vertical": "xsmall",
                   },
                 },
                 "help": Object {
@@ -3849,8 +4006,19 @@ string",
                     "dark": "dark-3",
                     "light": "dark-3",
                   },
+                  "margin": Object {
+                    "left": "small",
+                  },
                 },
-                "label": Object {},
+                "label": Object {
+                  "margin": Object {
+                    "horizontal": "small",
+                    "vertical": "xsmall",
+                  },
+                },
+                "margin": Object {
+                  "bottom": "small",
+                },
               },
               "global": Object {
                 "animation": Object {
@@ -4298,11 +4466,27 @@ string",
                   "height": "4px",
                 },
               },
+              "rangeSelector": Object {
+                "background": Object {
+                  "invert": Object {
+                    "color": "light-4",
+                  },
+                },
+              },
               "select": Object {
                 "container": Object {},
                 "control": Object {},
                 "icons": Object {
                   "down": [Function],
+                },
+                "options": Object {
+                  "box": Object {
+                    "align": "start",
+                    "pad": "small",
+                  },
+                  "text": Object {
+                    "margin": "none",
+                  },
                 },
                 "step": 20,
               },
@@ -4526,6 +4710,7 @@ string",
               "previous": [Function],
             },
           },
+          "chart": Object {},
           "checkBox": Object {
             "border": Object {
               "color": Object {
@@ -4679,10 +4864,20 @@ string",
               "position": "inner",
               "side": "bottom",
             },
+            "content": Object {
+              "pad": Object {
+                "bottom": "small",
+                "horizontal": "small",
+              },
+            },
             "error": Object {
               "color": Object {
                 "dark": "status-critical",
                 "light": "status-critical",
+              },
+              "margin": Object {
+                "horizontal": "small",
+                "vertical": "xsmall",
               },
             },
             "help": Object {
@@ -4690,8 +4885,19 @@ string",
                 "dark": "dark-3",
                 "light": "dark-3",
               },
+              "margin": Object {
+                "left": "small",
+              },
             },
-            "label": Object {},
+            "label": Object {
+              "margin": Object {
+                "horizontal": "small",
+                "vertical": "xsmall",
+              },
+            },
+            "margin": Object {
+              "bottom": "small",
+            },
           },
           "global": Object {
             "animation": Object {
@@ -5139,11 +5345,27 @@ string",
               "height": "4px",
             },
           },
+          "rangeSelector": Object {
+            "background": Object {
+              "invert": Object {
+                "color": "light-4",
+              },
+            },
+          },
           "select": Object {
             "container": Object {},
             "control": Object {},
             "icons": Object {
               "down": [Function],
+            },
+            "options": Object {
+              "box": Object {
+                "align": "start",
+                "pad": "small",
+              },
+              "text": Object {
+                "margin": "none",
+              },
             },
             "step": 20,
           },
@@ -5375,6 +5597,7 @@ string",
                 "previous": [Function],
               },
             },
+            "chart": Object {},
             "checkBox": Object {
               "border": Object {
                 "color": Object {
@@ -5528,10 +5751,20 @@ string",
                 "position": "inner",
                 "side": "bottom",
               },
+              "content": Object {
+                "pad": Object {
+                  "bottom": "small",
+                  "horizontal": "small",
+                },
+              },
               "error": Object {
                 "color": Object {
                   "dark": "status-critical",
                   "light": "status-critical",
+                },
+                "margin": Object {
+                  "horizontal": "small",
+                  "vertical": "xsmall",
                 },
               },
               "help": Object {
@@ -5539,8 +5772,19 @@ string",
                   "dark": "dark-3",
                   "light": "dark-3",
                 },
+                "margin": Object {
+                  "left": "small",
+                },
               },
-              "label": Object {},
+              "label": Object {
+                "margin": Object {
+                  "horizontal": "small",
+                  "vertical": "xsmall",
+                },
+              },
+              "margin": Object {
+                "bottom": "small",
+              },
             },
             "global": Object {
               "animation": Object {
@@ -5988,11 +6232,27 @@ string",
                 "height": "4px",
               },
             },
+            "rangeSelector": Object {
+              "background": Object {
+                "invert": Object {
+                  "color": "light-4",
+                },
+              },
+            },
             "select": Object {
               "container": Object {},
               "control": Object {},
               "icons": Object {
                 "down": [Function],
+              },
+              "options": Object {
+                "box": Object {
+                  "align": "start",
+                  "pad": "small",
+                },
+                "text": Object {
+                  "margin": "none",
+                },
               },
               "step": 20,
             },
@@ -6366,6 +6626,14 @@ zoomOut
     medium
     strong
     boolean,
+  repeat: 
+    no-repeat
+    repeat
+    string,
+  size: 
+    cover
+    contain
+    string,
   light: string
 }",
               "name": "background",
@@ -6378,6 +6646,7 @@ small
 medium
 large
 xlarge
+xxlarge
 full
 1/2
 1/3
@@ -6477,7 +6746,8 @@ boolean",
               "description": "The amount of spacing between child elements. This
         should not be used in conjunction with 'wrap' as the gap elements
         will not wrap gracefully.",
-              "format": "xsmall
+              "format": "xxsmall
+xsmall
 small
 medium
 large
@@ -6487,22 +6757,26 @@ string",
             },
             Object {
               "description": "A fixed height.",
-              "format": "xsmall
+              "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
               "name": "height",
             },
             Object {
+              "defaultValue": "stretch",
               "description": "How to align the contents along the main axis.",
-              "format": "start
-center
+              "format": "around
 between
-around
+center
+end
 evenly
-end",
+start
+stretch",
               "name": "justify",
             },
             Object {
@@ -6643,11 +6917,13 @@ of indicating the DOM tag via the 'as' property.",
             },
             Object {
               "description": "A fixed width.",
-              "format": "xsmall
+              "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
               "name": "width",
             },
@@ -6875,6 +7151,14 @@ zoomOut
     medium
     strong
     boolean,
+  repeat: 
+    no-repeat
+    repeat
+    string,
+  size: 
+    cover
+    contain
+    string,
   light: string
 }",
             "name": "background",
@@ -6887,6 +7171,7 @@ small
 medium
 large
 xlarge
+xxlarge
 full
 1/2
 1/3
@@ -6986,7 +7271,8 @@ boolean",
             "description": "The amount of spacing between child elements. This
         should not be used in conjunction with 'wrap' as the gap elements
         will not wrap gracefully.",
-            "format": "xsmall
+            "format": "xxsmall
+xsmall
 small
 medium
 large
@@ -6996,22 +7282,26 @@ string",
           },
           Object {
             "description": "A fixed height.",
-            "format": "xsmall
+            "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
             "name": "height",
           },
           Object {
+            "defaultValue": "stretch",
             "description": "How to align the contents along the main axis.",
-            "format": "start
-center
+            "format": "around
 between
-around
+center
+end
 evenly
-end",
+start
+stretch",
             "name": "justify",
           },
           Object {
@@ -7152,11 +7442,13 @@ of indicating the DOM tag via the 'as' property.",
           },
           Object {
             "description": "A fixed width.",
-            "format": "xsmall
+            "format": "xxsmall
+xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string",
             "name": "width",
           },
