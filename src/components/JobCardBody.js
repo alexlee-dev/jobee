@@ -1,13 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { Box, Button, Heading, Text } from 'grommet'
+import { Box, Heading, Text } from 'grommet'
 import JobCardButtons from './JobCardButtons'
+import JobCardActions from './JobCardActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const JobCardBody = ({
   datePosted,
+  description,
   documentId,
+  editMode,
   employmentType,
   finalTitle,
   industry,
@@ -17,7 +20,11 @@ const JobCardBody = ({
   return (
     <Box style={{ padding: '24px 0 0 0' }}>
       <Box pad={{ horizontal: 'large' }}>
-        <Heading level="2" margin={{ top: 'none', bottom: 'small' }}>
+        <Heading
+          color="#0d121c"
+          level="2"
+          margin={{ top: 'none', bottom: 'small' }}
+        >
           {finalTitle[0] || title}
         </Heading>
         {finalTitle && (
@@ -33,7 +40,6 @@ const JobCardBody = ({
         justify="start"
         pad={{ horizontal: 'large' }}
       >
-        {/* <Location color="brand"  /> */}
         <FontAwesomeIcon color="purple" icon={['far', 'map-marker-alt']} />
         <Heading level="4" margin="none">
           {location}
@@ -50,24 +56,18 @@ const JobCardBody = ({
           {industry} | {employmentType}
         </Text>
       </Box>
+      <JobCardActions />
 
-      <Box pad={{ horizontal: 'large' }}>
-        <Button
-          label="View Description"
-          margin={{ bottom: 'medium', top: 'small' }}
-          plain
-          style={{ textDecoration: 'underline' }}
-        />
-      </Box>
-
-      <JobCardButtons documentId={documentId} />
+      {editMode && <JobCardButtons documentId={documentId} />}
     </Box>
   )
 }
 
 JobCardBody.propTypes = {
   datePosted: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   documentId: PropTypes.string.isRequired,
+  editMode: PropTypes.bool.isRequired,
   employmentType: PropTypes.string.isRequired,
   finalTitle: PropTypes.array,
   industry: PropTypes.string.isRequired,

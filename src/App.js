@@ -5,15 +5,14 @@ import './firebase/observer'
 import { Box } from 'grommet'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { far } from '@fortawesome/pro-regular-svg-icons'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { faBinoculars, faMapMarkerAlt } from '@fortawesome/pro-regular-svg-icons'
+import { faEllipsisH, faMapMarkerAlt } from '@fortawesome/pro-regular-svg-icons'
 import ActionBar from './components/ActionBar'
 import SignInScreen from './components/SignInScreen'
 import LoadingScreen from './components/LoadingScreen'
 import { screens } from './constants'
 import NavBar from './components/NavBar'
 
-library.add(far, faBinoculars, faCoffee, faMapMarkerAlt)
+library.add(far, faEllipsisH, faMapMarkerAlt)
 
 export const App = ({ app, firebase }) => {
   const { currentScreen, isLoading } = app
