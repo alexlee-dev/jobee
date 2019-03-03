@@ -1,28 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Box, Image, Stack, Text } from 'grommet'
+import { Box, Image } from 'grommet'
 
-const JobCardHeader = ({ location }) => {
+const JobCardHeader = () => {
   return (
     <Box height="125px">
-      <Stack>
-        <Box height="125px">
-          <Image
-            className="round-top"
-            fit="cover"
-            src="https://images.pexels.com/photos/432361/pexels-photo-432361.jpeg?auto=compress"
-          />
-        </Box>
-        <Text className="location-tag" color="white">
-          {location}
-        </Text>
-      </Stack>
+      <Image
+        className="round-top"
+        fit="cover"
+        src="https://images.pexels.com/photos/432361/pexels-photo-432361.jpeg?auto=compress"
+      />
     </Box>
   )
-}
-
-JobCardHeader.propTypes = {
-  location: PropTypes.string.isRequired
 }
 
 export default JobCardHeader

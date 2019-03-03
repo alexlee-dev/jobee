@@ -16,7 +16,7 @@ export const JobCard = ({
   title
 }) => {
   let finalEmploymentType = employmentType
-  if (!employmentType) finalEmploymentType = 'Inquire within' 
+  if (!employmentType) finalEmploymentType = 'Inquire within'
   let finalTitle = []
   if (title && title.includes(',')) finalTitle = title.split(',')
   let location
@@ -35,13 +35,14 @@ export const JobCard = ({
       style={{ maxHeight: '500px' }}
       width="80%"
     >
-      <JobCardHeader location={location} />
+      <JobCardHeader />
       <JobCardBody
         datePosted={datePosted}
         documentId={documentId}
         employmentType={finalEmploymentType}
         finalTitle={finalTitle}
         industry={industry}
+        location={location}
         title={title}
       />
     </Box>
