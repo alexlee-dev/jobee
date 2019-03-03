@@ -33,7 +33,7 @@ class JobCardBodyDescription extends Component {
       return (
         <Box pad="large">
           <Box
-            fill="horizontal"
+            fill
             margin={{ bottom: 'medium' }}
             pad={{ vertical: 'medium' }}
           >

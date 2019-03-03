@@ -17,6 +17,7 @@ dependencies:
   is-online: 8.1.0
   marked: 0.6.1
   moment: 2.24.0
+  nuka-carousel: 4.4.8
   polished: 3.0.3
   prop-types: 15.7.2
   react: 16.8.3
@@ -1906,6 +1907,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==
+  /@types/d3-timer/1.0.9:
+    dev: false
+    resolution:
+      integrity: sha512-WvfJ3LFxBbWjqRGz9n7GJt08RrTHPJDVsIwwoCMROlqF+iDacYiAFjf9oqnq0mXpb2juA2N/qjKP+MKdal3YNQ==
   /@types/node/11.10.4:
     resolution:
       integrity: sha512-wa09itaLE8L705aXd8F80jnFpxz3Y1/KRHfKsYL2bPc0XF+wEWu8sR9n5bmeu8Ba1N9z2GRNzm/YdHcghLkLKg==
@@ -3928,6 +3933,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
+  /d3-ease/1.0.5:
+    dev: false
+    resolution:
+      integrity: sha512-Ct1O//ly5y5lFM9YTdu+ygq7LleSgSE4oj7vUt9tPLHUi8VCV7QoizGpdWRWAwCO9LdYzIrQDg97+hGVdsSGPQ==
+  /d3-timer/1.0.9:
+    dev: false
+    resolution:
+      integrity: sha512-rT34J5HnQUHhcLvhSB9GjCkN0Ddd5Y8nCwDBG2u6wQEeYxT/Lf51fTFFkldeib/sE/J0clIe0pnCfs6g/lRbyg==
   /damerau-levenshtein/1.0.4:
     dev: false
     resolution:
@@ -4857,6 +4870,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-adbxcyWV46qiHyvSp50TKt05tB4tK3HcmF7/nxfAdhnox83seTDbwnaqKO4sXRy7roHAIFqJP/Rw/AuEbX61LA==
+  /exenv/1.2.2:
+    dev: false
+    resolution:
+      integrity: sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
   /exit/0.1.2:
     dev: false
     engines:
@@ -7190,6 +7207,13 @@ packages:
       node: '>=4.0'
     resolution:
       integrity: sha1-6AGxs5mF4g//yHtA43SAgOLcrH8=
+  /kapellmeister/2.0.2:
+    dependencies:
+      '@types/d3-timer': 1.0.9
+      d3-timer: 1.0.9
+    dev: false
+    resolution:
+      integrity: sha512-Mk1IVuLFKb2704j3bX7CmCU8eqNFoiqPv/Z3tYRoFysg12mrVHKzKzmkP2eqf1W7do0c1Ekpc36L+hrE0PxAmg==
   /keyv/3.1.0:
     dependencies:
       json-buffer: 3.0.0
@@ -7986,6 +8010,18 @@ packages:
       boolbase: 1.0.0
     resolution:
       integrity: sha512-WeBOdju8SnzPN5vTUJYxYUxLeXpCaVP5i5e0LF8fg7WORF2Wd7wFX/pk0tYZk7s8T+J7VLy0Da6J1+wCT0AtHg==
+  /nuka-carousel/4.4.8:
+    dependencies:
+      d3-ease: 1.0.5
+      exenv: 1.2.2
+      prop-types: 15.7.2
+      react-move: 5.2.0
+    dev: false
+    peerDependencies:
+      react: ^0.14.9 || ^15.3.0 || ^16.0.0
+      react-dom: ^0.14.9 || ^15.3.0 || ^16.0.0
+    resolution:
+      integrity: sha512-1QcHVumb5yakSCI6Mh0YSBhwBEOMLQXFSWHfgiC1KL5sAoyb61lQtzfm+nnEGEuhA3rckHemMkKhDXFIJ4/oxg==
   /num2fraction/1.2.2:
     dev: false
     resolution:
@@ -9657,6 +9693,17 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+  /react-move/5.2.0:
+    dependencies:
+      '@babel/runtime': 7.3.4
+      kapellmeister: 2.0.2
+      prop-types: 15.7.2
+      react-lifecycles-compat: 3.0.4
+    dev: false
+    peerDependencies:
+      react: ^0.14.9 || ^15.3.0 || ^16.0.0
+    resolution:
+      integrity: sha512-iWHIqEgfmVzFTBMpGqKvUhQcC7A7afaej6amUkrUu8ZTqwdccsrUW0bme4iZuW1Yp5yNBqus6Gq4cFbHxMWIyg==
   /react-redux/6.0.1:
     dependencies:
       '@babel/runtime': 7.3.4
@@ -12108,6 +12155,7 @@ specifiers:
   is-online: ^8.0.0
   marked: ^0.6.1
   moment: ^2.24.0
+  nuka-carousel: ^4.4.8
   polished: ^3.0.0
   prop-types: ^15.7.2
   react: ^16.8.2
