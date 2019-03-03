@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Box } from 'grommet'
 import JobCard from '../components/JobCard'
 
-export const Jobs = ({ firebase }) => {
+export const Watchlist = ({ firebase }) => {
   const { watchlist, watchlistIndex } = firebase.user.preferences
   const { jobs } = firebase.database
   const id = watchlist[watchlistIndex]
@@ -26,11 +26,11 @@ export const Jobs = ({ firebase }) => {
   )
 }
 
-Jobs.propTypes = {
+Watchlist.propTypes = {
   dispatch: PropTypes.func.isRequired,
   firebase: PropTypes.object.isRequired
 }
 
 const mapStateToProps = ({ firebase }) => ({ firebase })
 
-export default connect(mapStateToProps)(Jobs)
+export default connect(mapStateToProps)(Watchlist)

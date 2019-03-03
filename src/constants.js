@@ -1,5 +1,5 @@
-import Jobs from './screens/Jobs'
 import Settings from './screens/Settings'
+import Watchlist from './screens/Watchlist'
 
 export const emptyUser = {
   displayName: null,
@@ -8,6 +8,6 @@ export const emptyUser = {
 }
 
 export const screens = {
-  jobs: Jobs,
-  settings: Settings
+  settings: Settings,
+  watchlist: Watchlist,
 }
