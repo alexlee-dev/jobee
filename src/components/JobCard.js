@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Box } from 'grommet'
 import JobCardHeader from './JobCardHeader'
 import JobCardBody from './JobCardBody'
@@ -9,8 +10,10 @@ export class JobCard extends Component {
     addressCountry: PropTypes.string,
     addressLocality: PropTypes.string,
     addressRegion: PropTypes.string,
+    app: PropTypes.object.isRequired,
     datePosted: PropTypes.string,
     description: PropTypes.string,
+    dispatch: PropTypes.func.isRequired,
     documentId: PropTypes.string,
     employmentType: PropTypes.string,
     industry: PropTypes.string,
@@ -20,6 +23,7 @@ export class JobCard extends Component {
   state = { editMode: false }
 
   render() {
+    const { isDescriptionVisible } = this.props.app
     const { editMode } = this.state
     const {
       addressCountry,
@@ -52,7 +56,7 @@ export class JobCard extends Component {
         style={{ maxHeight: '500px' }}
         width="80%"
       >
-        <JobCardHeader />
+        {!isDescriptionVisible && <JobCardHeader />}
         <JobCardBody
           datePosted={datePosted}
           description={description}
@@ -69,7 +73,9 @@ export class JobCard extends Component {
   }
 }
 
-export default JobCard
+const mapStateToProps = ({ app }) => ({ app })
+
+export default connect(mapStateToProps)(JobCard)
 
 // export const JobCard = ({
 //   addressCountry,

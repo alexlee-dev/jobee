@@ -29,3 +29,9 @@ code {
   padding: 5px 10px 5px 10px;
   position: absolute;
 }
+
+.description-container {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
