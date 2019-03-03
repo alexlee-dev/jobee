@@ -17,7 +17,7 @@ export const ActionBar = ({ app }) => {
     >
       {!isLoading && (
         <React.Fragment>
-          <ActionBarButton icon={Sort} screen="jobs" />
+          <ActionBarButton icon={Sort} screen="watchlist" />
           <ActionBarButton icon={SettingsOption} screen="settings" />
         </React.Fragment>
       )}

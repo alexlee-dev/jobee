@@ -29,7 +29,7 @@ ShallowWrapper {
       "children": <React.Fragment>
         <Connect(ActionBarButton)
           icon={[Function]}
-          screen="jobs"
+          screen=""
         />
         <Connect(ActionBarButton)
           icon={[Function]}
