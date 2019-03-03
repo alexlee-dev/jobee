@@ -3,6 +3,12 @@
   "version": "0.6.0",
   "description": "Job Finder.",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@fortawesome/pro-light-svg-icons": "^5.7.2",
+    "@fortawesome/pro-regular-svg-icons": "^5.7.2",
+    "@fortawesome/pro-solid-svg-icons": "^5.7.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "cross-env": "^5.2.0",
     "eslint-plugin-flowtype": "^3.4.2",
     "eslint-plugin-import": "^2.16.0",
