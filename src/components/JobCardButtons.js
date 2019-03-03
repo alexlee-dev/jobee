@@ -7,6 +7,7 @@ import {
   continueWatchingJob
 } from '../redux/actions/firebase'
 import { setLoadingState } from '../redux/actions/app'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const JobCardButtons = ({ dispatch, documentId, firebase }) => {
   const { preferences, uid } = firebase.user
@@ -29,10 +30,13 @@ const JobCardButtons = ({ dispatch, documentId, firebase }) => {
         <Box
           align="center"
           background="status-critical"
+          direction="row"
           fill
+          gap="small"
           justify="center"
           round={{ corner: 'bottom-left', size: 'medium' }}
         >
+          <FontAwesomeIcon icon={['far', 'eye-slash']} size="sm" />
           <Text color="white" size="small" weight="bold">
             IGNORE
           </Text>
