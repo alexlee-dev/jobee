@@ -35,3 +35,7 @@ code {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+.slider {
+  height: 100% !important;
+}

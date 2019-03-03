@@ -47,27 +47,28 @@ export class JobCard extends Component {
       location = addressCountry
     }
     return (
-      <Box
-        // background="#ecf0f1"
-        background="#ffffff"
-        elevation="large"
-        margin={{ top: 'medium' }}
-        round="medium"
-        style={{ maxHeight: '500px' }}
-        width="80%"
-      >
-        {!isDescriptionVisible && <JobCardHeader />}
-        <JobCardBody
-          datePosted={datePosted}
-          description={description}
-          documentId={documentId}
-          editMode={editMode}
-          employmentType={finalEmploymentType}
-          finalTitle={finalTitle}
-          industry={industry}
-          location={location}
-          title={title}
-        />
+      <Box align="center" fill justify="start">
+        <Box
+          // background="#ecf0f1"
+          background="#ffffff"
+          elevation="large"
+          round="medium"
+          style={{ maxHeight: '450px' }}
+          width="80%"
+        >
+          {!isDescriptionVisible && <JobCardHeader />}
+          <JobCardBody
+            datePosted={datePosted}
+            description={description}
+            documentId={documentId}
+            editMode={editMode}
+            employmentType={finalEmploymentType}
+            finalTitle={finalTitle}
+            industry={industry}
+            location={location}
+            title={title}
+          />
+        </Box>
       </Box>
     )
   }
