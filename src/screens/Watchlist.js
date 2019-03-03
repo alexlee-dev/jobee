@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Box } from 'grommet'
+import { Box, Text } from 'grommet'
 import Carousel from 'nuka-carousel'
 import JobCard from '../components/JobCard'
 
@@ -14,6 +14,7 @@ class Watchlist extends Component {
   state = {
     currentSlideIndex: 0,
     numberOfSlidesRendered: 0,
+    numberOfSlidesInWatchlist: null,
     slides: []
   }
 
@@ -48,7 +49,11 @@ class Watchlist extends Component {
       finalJobArray = arrayOfJobObjs
     }
 
-    this.setState(() => ({ numberOfSlidesRendered: 5, slides: finalJobArray }))
+    this.setState(() => ({
+      numberOfSlidesRendered: 5,
+      numberOfSlidesInWatchlist: watchlist.length,
+      slides: finalJobArray
+    }))
   }
 
   handleAfterSlide = slideIndex => {
@@ -65,111 +70,14 @@ class Watchlist extends Component {
     }
   }
 
-  renderLi = handleClick => {
-    const dotIndexes = [0, 1, 2, 3, 4]
+  handleRenderPageDots = ({ currentSlide }) => {
+    const { numberOfSlidesInWatchlist } = this.state
     return (
-      <React.Fragment>
-        <li style={{ listStyleType: 'none', display: 'inline-block' }}>
-          <button
-            aria-label="slide 1 bullet"
-            onClick={() => handleClick(dotIndexes[0])}
-            style={{
-              border: '0',
-              background: 'transparent',
-              color: 'black',
-              cursor: 'pointer',
-              padding: '10px',
-              fontSize: '24px',
-              opacity: '1'
-            }}
-          >
-            •
-          </button>
-        </li>
-        <li style={{ listStyleType: 'none', display: 'inline-block' }}>
-          <button
-            aria-label="slide 2 bullet"
-            onClick={() => handleClick(dotIndexes[1])}
-            style={{
-              border: '0',
-              background: 'transparent',
-              color: 'black',
-              cursor: 'pointer',
-              padding: '10px',
-              fontSize: '24px',
-              opacity: '1'
-            }}
-          >
-            •
-          </button>
-        </li>
-        <li style={{ listStyleType: 'none', display: 'inline-block' }}>
-          <button
-            aria-label="slide 3 bullet"
-            onClick={() => handleClick(dotIndexes[2])}
-            style={{
-              border: '0',
-              background: 'transparent',
-              color: 'black',
-              cursor: 'pointer',
-              padding: '10px',
-              fontSize: '24px',
-              opacity: '1'
-            }}
-          >
-            •
-          </button>
-        </li>
-        <li style={{ listStyleType: 'none', display: 'inline-block' }}>
-          <button
-            aria-label="slide 4 bullet"
-            onClick={() => handleClick(dotIndexes[3])}
-            style={{
-              border: '0',
-              background: 'transparent',
-              color: 'black',
-              cursor: 'pointer',
-              padding: '10px',
-              fontSize: '24px',
-              opacity: '1'
-            }}
-          >
-            •
-          </button>
-        </li>
-        <li style={{ listStyleType: 'none', display: 'inline-block' }}>
-          <button
-            aria-label="slide 5 bullet"
-            onClick={() => handleClick(dotIndexes[4])}
-            style={{
-              border: '0',
-              background: 'transparent',
-              color: 'black',
-              cursor: 'pointer',
-              padding: '10px',
-              fontSize: '24px',
-              opacity: '1'
-            }}
-          >
-            •
-          </button>
-        </li>
-      </React.Fragment>
-    )
-  }
-
-  handleRenderPageDots = ({ goToSlide }) => {
-    return (
-      <ul
-        style={{
-          position: 'relative',
-          margin: '0px',
-          top: '-10px',
-          padding: '0px'
-        }}
-      >
-        {this.renderLi(goToSlide)}
-      </ul>
+      <Box margin={{ bottom: 'xlarge' }}>
+        <Text color="white" weight="bold">
+          Job {currentSlide + 1} of {numberOfSlidesInWatchlist}
+        </Text>
+      </Box>
     )
   }
 
