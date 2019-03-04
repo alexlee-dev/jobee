@@ -27,10 +27,6 @@ export const setWatchlist = watchlist => ({
   type: SET_WATCHLIST,
   payload: { watchlist }
 })
-export const setWatchlistIndex = watchlistIndex => ({
-  type: SET_WATCHLIST_INDEX,
-  payload: { watchlistIndex }
-})
 
 ///////////////////
 
@@ -180,10 +176,7 @@ export const getAndSetStartData = uid => {
               return id
             })
             console.log({ arrayOfIds })
-            const initialPreferences = {
-              watchlist: arrayOfIds,
-              watchlistIndex: 0
-            }
+            const initialPreferences = { watchlist: arrayOfIds }
             setDocument('users', uid, initialPreferences)
               .then(() => {
                 dispatch(setUserPreferences(initialPreferences))
@@ -221,25 +214,5 @@ export const removeJobFromWatchlist = (uid, documentId) => {
           })
       })
       .catch(error => console.error(error))
-  }
-}
-
-export const continueWatchingJob = (uid, currentWatchlistIndex) => {
-  const newWatchlistIndex = currentWatchlistIndex + 1
-  return dispatch => {
-    return updateFieldInDocument(
-      'users',
-      uid,
-      'watchlistIndex',
-      newWatchlistIndex
-    )
-      .then(() => {
-        dispatch(setWatchlistIndex(newWatchlistIndex))
-        dispatch(setLoadingState(false))
-      })
-      .catch(error => {
-        console.error(error)
-        dispatch(setLoadingState(false))
-      })
   }
 }

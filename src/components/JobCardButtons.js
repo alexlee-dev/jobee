@@ -2,19 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Button, Text } from 'grommet'
-import {
-  removeJobFromWatchlist,
-  continueWatchingJob
-} from '../redux/actions/firebase'
+import { removeJobFromWatchlist } from '../redux/actions/firebase'
 import { setLoadingState } from '../redux/actions/app'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const JobCardButtons = ({ dispatch, documentId, firebase }) => {
-  const { preferences, uid } = firebase.user
-  const { watchlistIndex } = preferences
+  const { uid } = firebase.user
   const handleContinueWatching = () => {
-    dispatch(setLoadingState(true))
-    dispatch(continueWatchingJob(uid, watchlistIndex))
+    // ? No longer valid
+    // dispatch(setLoadingState(true))
+    // dispatch(continueWatchingJob(uid))
   }
   const handleRemoveFromWatchlist = () => {
     dispatch(setLoadingState(true))
