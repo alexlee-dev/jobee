@@ -10,10 +10,7 @@ describe('Firebase Reducer', () => {
       displayName: null,
       email: null,
       photoURL: null,
-      preferences: {
-        watchlist: [],
-        : 0
-      },
+      preferences: { watchlist: [] },
       uid: null
     }
   }
