@@ -13,9 +13,14 @@ code {
     monospace;
 } */
 
+body,
+html {
+  position: fixed;
+}
+
 .shell {
-  background-image: linear-gradient( 135deg, #F761A1 10%, #8C1BAB 100%);
-  transition: cubic-bezier(0.215, 0.610, 0.355, 5);
+  background-image: linear-gradient(135deg, #f761a1 10%, #8c1bab 100%);
+  transition: cubic-bezier(0.215, 0.61, 0.355, 5);
 }
 
 .round-top {
