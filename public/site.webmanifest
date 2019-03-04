@@ -16,5 +16,6 @@
     "theme_color": "#fca311",
     "background_color": "#fca311",
     "start_url": "https://jobee.netlify.com/",
-    "display": "standalone"
+    "display": "standalone",
+    "orientation": "portrait"
 }
