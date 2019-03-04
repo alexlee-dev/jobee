@@ -7,10 +7,7 @@ const firebaseDefaultState = {
     displayName: null,
     email: null,
     photoURL: null,
-    preferences: {
-      watchlist: [],
-      watchlistIndex: 0
-    },
+    preferences: { watchlist: [] },
     uid: null
   }
 }
@@ -41,17 +38,6 @@ export default (state = firebaseDefaultState, action) => {
           preferences: {
             ...state.user.preferences,
             watchlist
-          }
-        }
-      })
-    case 'SET_WATCHLIST_INDEX':
-      const { watchlistIndex } = action.payload
-      return Object.assign({}, state, {
-        user: {
-          ...state.user,
-          preferences: {
-            ...state.user.preferences,
-            watchlistIndex
           }
         }
       })
