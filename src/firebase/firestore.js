@@ -3,33 +3,17 @@ import 'firebase/firestore'
 
 export const database = firebase.firestore()
 
-// /**
-//  * Stores data in a document.
-//  * @param {String} documentId Unique string to identify the document.
-//  * @param {Object} data Object of data to store in the document.
-//  */
-// export const storeNewDocument = (documentId, data) =>
-//   db
-//     .collection('jobs')
-//     .doc(documentId)
-//     .set(data)
-
-// export const checkIfDocumentExists = documentId => {
-//   return new Promise((resolve, reject) => {
-//     // Collection
-//     const collectionRef = db.collection('jobs')
-//     // Document
-//     const docRef = collectionRef.doc(documentId)
-
-//     docRef
-//       .get()
-//       .then(doc => {
-//         if (doc.exists) {
-//           resolve(true)
-//         } else {
-//           resolve(false)
-//         }
-//       })
-//       .catch(error => reject(error))
-//   })
-// }
+firebase
+  .firestore()
+  .enablePersistence()
+  .then(() => console.log('Persistence has been enabled.'))
+  .catch(function(err) {
+    if (err.code === 'failed-precondition') {
+      console.log('Multiple browser tabs are open.')
+      console.log('Persistence can only be enabled in one tab at a time.')
+    } else if (err.code === 'unimplemented') {
+      console.log(
+        'The current browser does not support all of the features required to enable persistence.'
+      )
+    }
+  })
