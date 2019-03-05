@@ -6,14 +6,20 @@ import './firebase/init'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+import * as Sentry from '@sentry/browser'
 import { Grommet, grommet } from 'grommet'
+import ErrorBoundary from './components/ErrorBoundary'
 
 grommet.global.colors.brand = '#fca311'
+
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN })
 
 ReactDOM.render(
   <Provider store={store}>
     <Grommet full theme={grommet}>
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </Grommet>
   </Provider>,
   document.getElementById('root')
