@@ -2,7 +2,8 @@ const appDefaultState = {
   currentScreen: null,
   editMode: false,
   isDescriptionVisible: false,
-  isLoading: true
+  isLoading: true,
+  watchlistIndex: 0
 }
 
 export default (state = appDefaultState, action) => {
@@ -19,6 +20,9 @@ export default (state = appDefaultState, action) => {
     case 'SET_LOADING_STATE':
       const { isLoading } = action.payload
       return Object.assign({}, state, { isLoading })
+    case 'SET_WATCHLIST_INDEX':
+      const { watchlistIndex } = action.payload
+      return Object.assign({}, state, { watchlistIndex })
     default:
       return state
   }

@@ -5,7 +5,8 @@ describe('App Reducer', () => {
     currentScreen: null,
     editMode: false,
     isDescriptionVisible: false,
-    isLoading: true
+    isLoading: true,
+    watchlistIndex: 0
   }
 
   it('Should set up default state.', () => {
@@ -22,7 +23,8 @@ describe('App Reducer', () => {
       currentScreen: 'jobs',
       editMode: false,
       isDescriptionVisible: false,
-      isLoading: true
+      isLoading: true,
+      watchlistIndex: 0
     })
   })
 
@@ -35,7 +37,8 @@ describe('App Reducer', () => {
       currentScreen: null,
       editMode: false,
       isDescriptionVisible: false,
-      isLoading: false
+      isLoading: false,
+      watchlistIndex: 0
     })
   })
 })

@@ -6,7 +6,8 @@ describe('Redux Store', () => {
       currentScreen: null,
       editMode: false,
       isDescriptionVisible: false,
-      isLoading: true
+      isLoading: true,
+      watchlistIndex: 0
     },
     firebase: {
       database: { jobs: [] },
