@@ -4,15 +4,16 @@ import { connect } from 'react-redux'
 import { Box, Text } from 'grommet'
 import Carousel from 'nuka-carousel'
 import JobCard from '../components/JobCard'
+import { setWatchlistIndex } from '../redux/actions/app'
 
 class Watchlist extends Component {
   static propTypes = {
+    app: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     firebase: PropTypes.object.isRequired
   }
 
   state = {
-    currentSlideIndex: 0,
     numberOfSlidesRendered: 0,
     numberOfSlidesInWatchlist: null,
     slides: []
@@ -36,13 +37,15 @@ class Watchlist extends Component {
   componentDidMount() {
     const { watchlist } = this.props.firebase.user.preferences
     const { jobs } = this.props.firebase.database
+    const { watchlistIndex } = this.props.app
     const arrayOfJobObjs = watchlist.map(documentId =>
       jobs.find(obj => obj.id === documentId)
     )
 
     let finalJobArray = []
+
     if (arrayOfJobObjs.length > 5) {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < watchlistIndex + 5; i++) {
         finalJobArray.push(arrayOfJobObjs[i])
       }
     } else {
@@ -50,24 +53,23 @@ class Watchlist extends Component {
     }
 
     this.setState(() => ({
-      numberOfSlidesRendered: 5,
+      numberOfSlidesRendered: watchlistIndex + 5,
       numberOfSlidesInWatchlist: watchlist.length,
       slides: finalJobArray
     }))
   }
 
   handleAfterSlide = slideIndex => {
+    const { dispatch } = this.props
     const { numberOfSlidesRendered, slides } = this.state
     if (numberOfSlidesRendered === slideIndex + 1) {
       const fiveMoreSlides = this.getFiveMoreSlides()
       this.setState(() => ({
-        currentSlideIndex: slideIndex,
         numberOfSlidesRendered: slides.length + 5,
         slides: [...slides, ...fiveMoreSlides]
       }))
-    } else {
-      this.setState(() => ({ currentSlideIndex: slideIndex }))
     }
+    dispatch(setWatchlistIndex(slideIndex))
   }
 
   handleRenderPageDots = ({ currentSlide }) => {
@@ -82,7 +84,8 @@ class Watchlist extends Component {
   }
 
   render() {
-    const { currentSlideIndex, slides } = this.state
+    const { slides } = this.state
+    const { watchlistIndex } = this.props.app
 
     if (this.state.slides.length === 0) {
       return null
@@ -93,7 +96,7 @@ class Watchlist extends Component {
             afterSlide={this.handleAfterSlide}
             cellAlign="center"
             renderBottomCenterControls={this.handleRenderPageDots}
-            slideIndex={currentSlideIndex}
+            slideIndex={watchlistIndex}
           >
             {slides.map(jobObj => {
               const { data, id } = jobObj
@@ -119,6 +122,6 @@ class Watchlist extends Component {
   }
 }
 
-const mapStateToProps = ({ firebase }) => ({ firebase })
+const mapStateToProps = ({ app, firebase }) => ({ app, firebase })
 
 export default connect(mapStateToProps)(Watchlist)
