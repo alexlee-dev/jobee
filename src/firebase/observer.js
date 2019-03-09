@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import store from '../redux/store/store'
-import { setLoadingState, setOnboarding } from '../redux/actions/app'
+import { setLoadingState } from '../redux/actions/app'
 import {
   setHasCheckedForUser,
   setUser,

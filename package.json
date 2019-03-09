@@ -17,7 +17,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "firebase": "^5.8.4",
-    "grommet": "^2.4.0",
+    "grommet": "^2.5.5",
     "grommet-icons": "^4.2.0",
     "is-online": "^8.0.0",
     "marked": "^0.6.1",
