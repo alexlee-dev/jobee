@@ -159,7 +159,7 @@ export const getAndSetStartData = uid => {
           .then(jobArray => {
             dispatch(setUserPreferences(userPreferences))
             dispatch(setDatabase('jobs', jobArray))
-            dispatch(setCurrentScreen('watchlist'))
+            dispatch(setCurrentScreen('today'))
             dispatch(setLoadingState(false))
           })
           .catch(error => {
@@ -181,7 +181,7 @@ export const getAndSetStartData = uid => {
               .then(() => {
                 dispatch(setUserPreferences(initialPreferences))
                 dispatch(setDatabase('', jobArray))
-                dispatch(setCurrentScreen('watchlist'))
+                dispatch(setCurrentScreen('today'))
                 dispatch(setLoadingState(false))
               })
               .catch(error => console.error(error))

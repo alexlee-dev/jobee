@@ -18,9 +18,13 @@ const JobCardActions = ({ app, dispatch }) => {
     dispatch(setEditMode(false))
   }
 
-  const editModeMenuOptions = [{ label: 'Exit Edit Mode', onClick: handleDefaultMode }]
+  const editModeMenuOptions = [
+    { label: 'Exit Edit Mode', onClick: handleDefaultMode }
+  ]
 
-  const defaultModeMenuOptions = [{ label: 'Edit Mode', onClick: handleEditMode }]
+  const defaultModeMenuOptions = [
+    { label: 'Edit Mode', onClick: handleEditMode }
+  ]
 
   const { editMode } = app
 

@@ -35,14 +35,14 @@ describe('<App />', () => {
 
   it('Should render the <App /> when it is done loading.', () => {
     const wrapper = rerender(scope, {
-      app: { currentScreen: 'jobs', isLoading: false }
+      app: { currentScreen: 'today', isLoading: false }
     })
     expect(wrapper).toMatchSnapshot()
   })
 
   it('Should render the <App /> when it is done loading, and there is a user displayName.', () => {
     const wrapper = rerender(scope, {
-      app: { currentScreen: 'jobs', isLoading: false },
+      app: { currentScreen: 'today', isLoading: false },
       firebase: {
         database: { jobs: [] },
         hasCheckedForUser: false,
