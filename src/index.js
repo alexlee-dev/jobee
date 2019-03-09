@@ -9,10 +9,14 @@ import * as serviceWorker from './serviceWorker'
 import * as Sentry from '@sentry/browser'
 import { Grommet, grommet } from 'grommet'
 import ErrorBoundary from './components/ErrorBoundary'
+import { version } from '../package.json'
 
 grommet.global.colors.brand = '#fca311'
 
-Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN })
+Sentry.init({
+  dsn: process.env.REACT_APP_SENTRY_DSN,
+  release: `jobee@${version}`
+})
 
 ReactDOM.render(
   <Provider store={store}>
