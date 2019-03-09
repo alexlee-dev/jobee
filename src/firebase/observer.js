@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import store from '../redux/store/store'
-import { setLoadingState } from '../redux/actions/app'
+import { setLoadingState, setOnboarding } from '../redux/actions/app'
 import {
   setHasCheckedForUser,
   setUser,
@@ -24,6 +24,8 @@ firebase.auth().onAuthStateChanged(user => {
     console.log('User is not signed in.')
     store.dispatch(setHasCheckedForUser(true))
     store.dispatch(setUser(emptyUser))
+    // * dispatch onboarding
+    store.dispatch(setOnboarding(true))
     store.dispatch(setLoadingState(false))
   }
 })

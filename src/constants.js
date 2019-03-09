@@ -1,6 +1,9 @@
 import Settings from './screens/Settings'
 import Today from './screens/Today'
 import Watchlist from './screens/Watchlist'
+import Onboarding1 from './screens/onboarding/Onboarding1';
+import Onboarding2 from './screens/onboarding/Onboarding2';
+import Onboarding3 from './screens/onboarding/Onboarding3';
 
 export const emptyUser = {
   displayName: null,
@@ -12,4 +15,10 @@ export const screens = {
   settings: Settings,
   today: Today,
   watchlist: Watchlist
+}
+
+export const onboardingContent = {
+  0: Onboarding1,
+  1: Onboarding2,
+  2: Onboarding3
 }
