@@ -22,7 +22,12 @@ const Onboarding = ({ app }) => {
   // }
 
   const handleFormSubmission = ({ value }) => {
+    // * Can probably use Redux to look at the onboarding step
+    const { onboardingStep } = app
+
+    
     const formInfo = value
+    
     console.table(formInfo)
   }
 

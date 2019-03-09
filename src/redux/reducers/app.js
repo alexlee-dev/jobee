@@ -2,8 +2,8 @@ const appDefaultState = {
   currentScreen: null,
   editMode: false,
   isDescriptionVisible: false,
-  isLoading: false,
-  isOnboarding: true,
+  isLoading: true,
+  isOnboarding: false,
   onboardingStep: 0,
   watchlistIndex: 0
 }

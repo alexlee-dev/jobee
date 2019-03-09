@@ -1,5 +1,6 @@
 const firebaseDefaultState = {
   database: {
+    companies: [],
     jobs: []
   },
   hasCheckedForUser: false,
@@ -7,7 +8,7 @@ const firebaseDefaultState = {
     displayName: null,
     email: null,
     photoURL: null,
-    preferences: { watchlist: [] },
+    preferences: { favoriteCompanies: [], watchlist: [] },
     uid: null
   }
 }
@@ -16,9 +17,10 @@ export default (state = firebaseDefaultState, action) => {
   switch (action.type) {
     case 'SET_DATABASE':
       const { collectionName, dataArray } = action.payload
-      return Object.assign({}, state, {
-        database: { [collectionName]: dataArray }
+      const newDatabase = Object.assign({}, state.database, {
+        [collectionName]: dataArray
       })
+      return Object.assign({}, state, { database: newDatabase })
     case 'SET_HAS_CHECKED_FOR_USER':
       const { hasCheckedForUser } = action.payload
       return Object.assign({}, state, { hasCheckedForUser })
@@ -26,6 +28,8 @@ export default (state = firebaseDefaultState, action) => {
       const { user } = action.payload
       return Object.assign({}, state, { user })
     case 'SET_USER_PREFERENCES':
+    // TODO: You were going to edit this to be more dynamic like the SET_DATABASE
+    // * so that you could set the favorite companies in onboarding here
       const { userPreferences } = action.payload
       return Object.assign({}, state, {
         user: { ...state.user, preferences: userPreferences }
