@@ -6,7 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <App
     app={
       Object {
-        "currentScreen": "jobs",
+        "currentScreen": "today",
         "isLoading": false,
       }
     }
@@ -41,7 +41,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Connect(NavBar) />,
-        <UNDEFINED />,
+        <Today />,
         <Connect(ActionBar) />,
       ],
       "className": "shell",
@@ -937,7 +937,7 @@ ShallowWrapper {
         "props": Object {},
         "ref": null,
         "rendered": null,
-        "type": undefined,
+        "type": [Function],
       },
       Object {
         "instance": null,
@@ -1482,7 +1482,7 @@ string",
       "props": Object {
         "children": Array [
           <Connect(NavBar) />,
-          <UNDEFINED />,
+          <Today />,
           <Connect(ActionBar) />,
         ],
         "className": "shell",
@@ -2378,7 +2378,7 @@ string",
           "props": Object {},
           "ref": null,
           "rendered": null,
-          "type": undefined,
+          "type": [Function],
         },
         Object {
           "instance": null,
@@ -2946,7 +2946,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <App
     app={
       Object {
-        "currentScreen": "jobs",
+        "currentScreen": "today",
         "isLoading": false,
       }
     }

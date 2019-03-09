@@ -1,4 +1,5 @@
 import Settings from './screens/Settings'
+import Today from './screens/Today'
 import Watchlist from './screens/Watchlist'
 
 export const emptyUser = {
@@ -9,5 +10,6 @@ export const emptyUser = {
 
 export const screens = {
   settings: Settings,
-  watchlist: Watchlist,
+  today: Today,
+  watchlist: Watchlist
 }

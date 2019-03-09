@@ -28,6 +28,16 @@ ShallowWrapper {
       "background": "light-3",
       "children": <React.Fragment>
         <Connect(ActionBarButton)
+          fontAwesomeIcon={true}
+          icon={
+            Array [
+              "far",
+              "newspaper",
+            ]
+          }
+          screen="today"
+        />
+        <Connect(ActionBarButton)
           icon={[Function]}
           screen="watchlist"
         />
@@ -918,6 +928,16 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Connect(ActionBarButton)
+            fontAwesomeIcon={true}
+            icon={
+              Array [
+                "far",
+                "newspaper",
+              ]
+            }
+            screen="today"
+          />,
+          <Connect(ActionBarButton)
             icon={[Function]}
             screen="watchlist"
           />,
@@ -929,6 +949,22 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "fontAwesomeIcon": true,
+            "icon": Array [
+              "far",
+              "newspaper",
+            ],
+            "screen": "today",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -1489,6 +1525,16 @@ string",
       "props": Object {
         "background": "light-3",
         "children": <React.Fragment>
+          <Connect(ActionBarButton)
+            fontAwesomeIcon={true}
+            icon={
+              Array [
+                "far",
+                "newspaper",
+              ]
+            }
+            screen="today"
+          />
           <Connect(ActionBarButton)
             icon={[Function]}
             screen="watchlist"
@@ -2380,6 +2426,16 @@ string",
         "props": Object {
           "children": Array [
             <Connect(ActionBarButton)
+              fontAwesomeIcon={true}
+              icon={
+                Array [
+                  "far",
+                  "newspaper",
+                ]
+              }
+              screen="today"
+            />,
+            <Connect(ActionBarButton)
               icon={[Function]}
               screen="watchlist"
             />,
@@ -2391,6 +2447,22 @@ string",
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "fontAwesomeIcon": true,
+              "icon": Array [
+                "far",
+                "newspaper",
+              ],
+              "screen": "today",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           Object {
             "instance": null,
             "key": undefined,
