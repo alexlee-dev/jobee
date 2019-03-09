@@ -24,8 +24,6 @@ firebase.auth().onAuthStateChanged(user => {
     console.log('User is not signed in.')
     store.dispatch(setHasCheckedForUser(true))
     store.dispatch(setUser(emptyUser))
-    // * dispatch onboarding
-    store.dispatch(setOnboarding(true))
     store.dispatch(setLoadingState(false))
   }
 })

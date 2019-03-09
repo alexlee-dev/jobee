@@ -1,4 +1,5 @@
 import { database } from '../../firebase/firestore'
+import { setOnboarding } from './app'
 import { setLoadingState, setCurrentScreen } from './app'
 
 // * Action Types
@@ -181,7 +182,8 @@ export const getAndSetStartData = uid => {
               .then(() => {
                 dispatch(setUserPreferences(initialPreferences))
                 dispatch(setDatabase('', jobArray))
-                dispatch(setCurrentScreen('today'))
+                // dispatch(setCurrentScreen('today'))
+                dispatch(setOnboarding(true))
                 dispatch(setLoadingState(false))
               })
               .catch(error => console.error(error))

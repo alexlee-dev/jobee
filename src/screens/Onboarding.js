@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Box, Heading, Paragraph } from 'grommet'
+import { Box } from 'grommet'
 import ActionBarOnboarding from '../components/ActionBarOnboarding'
 import { onboardingContent } from '../constants'
 
@@ -16,7 +16,6 @@ const Onboarding = ({ app }) => {
         pad="large"
       >
         <Box>
-          <Heading>{onboardingStep}</Heading>
           <OnboardingContent />
         </Box>
         <ActionBarOnboarding />

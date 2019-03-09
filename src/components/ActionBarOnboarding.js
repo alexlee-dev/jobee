@@ -2,7 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Button } from 'grommet'
-import { setOnboardingStep, setOnboarding } from '../redux/actions/app'
+import {
+  setOnboardingStep,
+  setOnboarding,
+  setCurrentScreen
+} from '../redux/actions/app'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ActionBarOnboarding = ({ app, dispatch }) => {
@@ -17,6 +21,7 @@ const ActionBarOnboarding = ({ app, dispatch }) => {
   }
 
   const handleGetStared = () => {
+    dispatch(setCurrentScreen('today'))
     dispatch(setOnboarding(false))
   }
 
@@ -30,14 +35,10 @@ const ActionBarOnboarding = ({ app, dispatch }) => {
           color={onboardingStep > 0 ? '#fca311' : '#CCCCCC'}
           icon={['fas', 'circle']}
         />
-        <FontAwesomeIcon
-          color={onboardingStep > 1 ? '#fca311' : '#CCCCCC'}
-          icon={['fas', 'circle']}
-        />
       </Box>
       {onboardingStep > 0 && <Button label="Back" onClick={handleBack} />}
-      {onboardingStep < 2 && <Button label="Next" onClick={handleNext} />}
-      {onboardingStep === 2 && (
+      {onboardingStep < 1 && <Button label="Next" onClick={handleNext} />}
+      {onboardingStep === 1 && (
         <Button label="Get Started" onClick={handleGetStared} />
       )}
     </Box>

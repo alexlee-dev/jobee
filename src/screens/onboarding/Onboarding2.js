@@ -1,13 +1,15 @@
 import React from 'react'
-import { Box, Heading, Paragraph } from 'grommet'
+import { Box, Heading, Image, Paragraph } from 'grommet'
 
 const Onboarding1 = () => {
   return (
     <Box animation={{ type: 'fadeIn', duration: 3000 }}>
-      <Heading>2nd thing</Heading>
+      <Box height="40%">
+        <Image fit="contain" src="assets/svg/notify.svg" />
+      </Box>
+      <Heading>Important Notifications</Heading>
       <Paragraph>
-        Jobee helps you to narrow down your search to your favorite companies,
-        keeping an eye on any updates to their job board.
+        Stay in-the-know with updates on your favorite job postings.
       </Paragraph>
     </Box>
   )
