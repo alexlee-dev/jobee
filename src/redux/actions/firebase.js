@@ -1,15 +1,22 @@
 import { database } from '../../firebase/firestore'
+import { setOnboarding } from './app'
 import { setLoadingState, setCurrentScreen } from './app'
 
 // * Action Types
+export const SET_COMPANIES = 'SET_COMPANIES'
 export const SET_DATABASE = 'SET_DATABASE'
 export const SET_HAS_CHECKED_FOR_USER = 'SET_HAS_CHECKED_FOR_USER'
 export const SET_USER = 'SET_USER'
 export const SET_USER_PREFERENCES = 'SET_USER_PREFERENCES'
+export const SET_USER_PREFERENCE = 'SET_USER_PREFERENCE'
 export const SET_WATCHLIST = 'SET_WATCHLIST'
 export const SET_WATCHLIST_INDEX = 'SET_WATCHLIST_INDEX'
 
 // * Action Generators
+export const setCompanies = companies => ({
+  type: SET_COMPANIES,
+  payload: { companies }
+})
 export const setDatabase = (collectionName, dataArray) => ({
   type: SET_DATABASE,
   payload: { collectionName, dataArray }
@@ -22,6 +29,10 @@ export const setUser = user => ({ type: SET_USER, payload: { user } })
 export const setUserPreferences = userPreferences => ({
   type: SET_USER_PREFERENCES,
   payload: { userPreferences }
+})
+export const setUserPreference = (preferenceName, data) => ({
+  type: SET_USER_PREFERENCE,
+  payload: { preferenceName, data }
 })
 export const setWatchlist = watchlist => ({
   type: SET_WATCHLIST,
@@ -157,10 +168,21 @@ export const getAndSetStartData = uid => {
         const userPreferences = desiredUser.data
         getAllDocumentsFromCollection('jobs')
           .then(jobArray => {
-            dispatch(setUserPreferences(userPreferences))
-            dispatch(setDatabase('jobs', jobArray))
-            dispatch(setCurrentScreen('today'))
-            dispatch(setLoadingState(false))
+            getAllDocumentsFromCollection('companies')
+              .then(companiesArray => {
+                dispatch(setUserPreferences(userPreferences))
+                // TODO: Set the user's fav companies here
+                dispatch(setDatabase('companies', companiesArray))
+                dispatch(setDatabase('jobs', jobArray))
+                dispatch(setCurrentScreen('today'))
+                dispatch(setLoadingState(false))
+              })
+              .catch(error => {
+                console.warn(
+                  'Error while trying to get documents from database.'
+                )
+                console.error(error)
+              })
           })
           .catch(error => {
             console.warn('Error while trying to get documents from database.')
@@ -172,17 +194,25 @@ export const getAndSetStartData = uid => {
         // * Add user to /users
         getAllDocumentsFromCollection('jobs')
           .then(jobArray => {
-            const arrayOfIds = jobArray.map(({ id }) => {
-              return id
-            })
-            console.log({ arrayOfIds })
-            const initialPreferences = { watchlist: arrayOfIds }
-            setDocument('users', uid, initialPreferences)
-              .then(() => {
-                dispatch(setUserPreferences(initialPreferences))
-                dispatch(setDatabase('', jobArray))
-                dispatch(setCurrentScreen('today'))
-                dispatch(setLoadingState(false))
+            getAllDocumentsFromCollection('companies')
+              .then(companiesArray => {
+                const arrayOfIds = jobArray.map(({ id }) => {
+                  return id
+                })
+                const initialPreferences = {
+                  companies: [],
+                  watchlist: arrayOfIds
+                }
+                setDocument('users', uid, initialPreferences)
+                  .then(() => {
+                    dispatch(setUserPreferences(initialPreferences))
+                    dispatch(setDatabase('jobs', jobArray))
+                    dispatch(setDatabase('companies', companiesArray))
+                    // dispatch(setCurrentScreen('today'))
+                    dispatch(setOnboarding(true))
+                    dispatch(setLoadingState(false))
+                  })
+                  .catch(error => console.error(error))
               })
               .catch(error => console.error(error))
           })
@@ -212,6 +242,24 @@ export const removeJobFromWatchlist = (uid, documentId) => {
             console.error(error)
             dispatch(setLoadingState(false))
           })
+      })
+      .catch(error => console.error(error))
+  }
+}
+
+export const setInitialCompany = (uid, company) => {
+  return (dispatch, getState) => {
+    const currentUserPreferences = getState().firebase.user.preferences
+    const newUserPreferences = Object.assign({}, currentUserPreferences, {
+      companies: [company]
+    })
+    return setDocument('users', uid, newUserPreferences)
+      .then(() => {
+        dispatch(setUserPreferences(newUserPreferences))
+        // dispatch(setOnboardingStep(1))
+        dispatch(setCurrentScreen('today'))
+        dispatch(setOnboarding(false))
+        dispatch(setLoadingState(false))
       })
       .catch(error => console.error(error))
   }

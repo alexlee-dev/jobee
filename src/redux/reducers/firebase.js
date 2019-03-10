@@ -1,5 +1,6 @@
 const firebaseDefaultState = {
   database: {
+    companies: [],
     jobs: []
   },
   hasCheckedForUser: false,
@@ -7,7 +8,7 @@ const firebaseDefaultState = {
     displayName: null,
     email: null,
     photoURL: null,
-    preferences: { watchlist: [] },
+    preferences: { companies: [], watchlist: [] },
     uid: null
   }
 }
@@ -16,9 +17,10 @@ export default (state = firebaseDefaultState, action) => {
   switch (action.type) {
     case 'SET_DATABASE':
       const { collectionName, dataArray } = action.payload
-      return Object.assign({}, state, {
-        database: { [collectionName]: dataArray }
+      const newDatabase = Object.assign({}, state.database, {
+        [collectionName]: dataArray
       })
+      return Object.assign({}, state, { database: newDatabase })
     case 'SET_HAS_CHECKED_FOR_USER':
       const { hasCheckedForUser } = action.payload
       return Object.assign({}, state, { hasCheckedForUser })
@@ -29,6 +31,14 @@ export default (state = firebaseDefaultState, action) => {
       const { userPreferences } = action.payload
       return Object.assign({}, state, {
         user: { ...state.user, preferences: userPreferences }
+      })
+    case 'SET_USER_PREFERENCE':
+      const { preferenceName, data } = action.payload
+      const newUserPreferences = Object.assign({}, state.user.preferences, {
+        [preferenceName]: data
+      })
+      return Object.assign({}, state, {
+        user: { ...state.user, preferences: newUserPreferences }
       })
     case 'SET_WATCHLIST':
       const { watchlist } = action.payload

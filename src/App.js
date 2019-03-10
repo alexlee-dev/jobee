@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './firebase/observer'
 import { Box } from 'grommet'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/pro-solid-svg-icons'
+import { fas, faCircle } from '@fortawesome/pro-solid-svg-icons'
 import { far } from '@fortawesome/pro-regular-svg-icons'
 import {
   faEllipsisV,
@@ -12,28 +12,38 @@ import {
   faNewspaper
 } from '@fortawesome/pro-regular-svg-icons'
 import ActionBar from './components/ActionBar'
-import SignInScreen from './components/SignInScreen'
-import LoadingScreen from './components/LoadingScreen'
+import LoadingScreen from './screens/Loading'
+import SignInScreen from './screens/SignIn'
 import { screens } from './constants'
 import NavBar from './components/NavBar'
+import ErrorBoundary from './components/ErrorBoundary'
+import Onboarding from './screens/Onboarding'
 
-library.add(far, fas, faEllipsisV, faMapMarkerAlt, faNewspaper)
+library.add(far, fas, faCircle, faEllipsisV, faMapMarkerAlt, faNewspaper)
 
 export const App = ({ app, firebase }) => {
-  const { currentScreen, isLoading } = app
+  const { currentScreen, isLoading, isOnboarding } = app
   const { displayName } = firebase.user
   const Screen = screens[currentScreen]
 
   if (isLoading) {
     return <LoadingScreen />
-  } else if (!isLoading && !displayName) {
+  } else if (!isLoading && isOnboarding) {
+    return <Onboarding />
+  } else if (!isLoading && !isOnboarding && !displayName) {
     return <SignInScreen />
   } else {
     return (
       <Box className="shell" fill justify="between">
-        <NavBar />
-        <Screen />
-        <ActionBar />
+        <ErrorBoundary>
+          <NavBar />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Screen />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ActionBar />
+        </ErrorBoundary>
       </Box>
     )
   }

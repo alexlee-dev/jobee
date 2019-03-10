@@ -3,6 +3,8 @@ const appDefaultState = {
   editMode: false,
   isDescriptionVisible: false,
   isLoading: true,
+  isOnboarding: false,
+  onboardingStep: 0,
   watchlistIndex: 0
 }
 
@@ -20,6 +22,12 @@ export default (state = appDefaultState, action) => {
     case 'SET_LOADING_STATE':
       const { isLoading } = action.payload
       return Object.assign({}, state, { isLoading })
+    case 'SET_ONBOARDING':
+      const { isOnboarding } = action.payload
+      return Object.assign({}, state, { isOnboarding })
+    case 'SET_ONBOARDING_STEP':
+      const { onboardingStep } = action.payload
+      return Object.assign({}, state, { onboardingStep })
     case 'SET_WATCHLIST_INDEX':
       const { watchlistIndex } = action.payload
       return Object.assign({}, state, { watchlistIndex })

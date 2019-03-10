@@ -8,7 +8,6 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import * as Sentry from '@sentry/browser'
 import { Grommet, grommet } from 'grommet'
-import ErrorBoundary from './components/ErrorBoundary'
 import { version } from '../package.json'
 
 grommet.global.colors.brand = '#fca311'
@@ -21,9 +20,7 @@ Sentry.init({
 ReactDOM.render(
   <Provider store={store}>
     <Grommet full theme={grommet}>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
+      <App />
     </Grommet>
   </Provider>,
   document.getElementById('root')
