@@ -27,11 +27,23 @@ export const App = ({ app, firebase }) => {
   const Screen = screens[currentScreen]
 
   if (isLoading) {
-    return <LoadingScreen />
+    return (
+      <ErrorBoundary>
+        <LoadingScreen />
+      </ErrorBoundary>
+    )
   } else if (!isLoading && isOnboarding) {
-    return <Onboarding />
+    return (
+      <ErrorBoundary>
+        <Onboarding />
+      </ErrorBoundary>
+    )
   } else if (!isLoading && !isOnboarding && !displayName) {
-    return <SignInScreen />
+    return (
+      <ErrorBoundary>
+        <SignInScreen />
+      </ErrorBoundary>
+    )
   } else {
     return (
       <Box className="shell" fill justify="between">
