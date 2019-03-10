@@ -7,7 +7,7 @@ const JobCardHeader = () => {
       <Image
         className="round-top"
         fit="cover"
-        src="https://images.pexels.com/photos/432361/pexels-photo-432361.jpeg?auto=compress"
+        src="https://res.cloudinary.com/alexlee-dev/image/upload/q_auto:eco/v1552237813/portland-5.jpg"
       />
     </Box>
   )

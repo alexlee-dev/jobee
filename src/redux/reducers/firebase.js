@@ -8,7 +8,7 @@ const firebaseDefaultState = {
     displayName: null,
     email: null,
     photoURL: null,
-    preferences: { favoriteCompanies: [], watchlist: [] },
+    preferences: { companies: [], watchlist: [] },
     uid: null
   }
 }
@@ -28,11 +28,17 @@ export default (state = firebaseDefaultState, action) => {
       const { user } = action.payload
       return Object.assign({}, state, { user })
     case 'SET_USER_PREFERENCES':
-    // TODO: You were going to edit this to be more dynamic like the SET_DATABASE
-    // * so that you could set the favorite companies in onboarding here
       const { userPreferences } = action.payload
       return Object.assign({}, state, {
         user: { ...state.user, preferences: userPreferences }
+      })
+    case 'SET_USER_PREFERENCE':
+      const { preferenceName, data } = action.payload
+      const newUserPreferences = Object.assign({}, state.user.preferences, {
+        [preferenceName]: data
+      })
+      return Object.assign({}, state, {
+        user: { ...state.user, preferences: newUserPreferences }
       })
     case 'SET_WATCHLIST':
       const { watchlist } = action.payload

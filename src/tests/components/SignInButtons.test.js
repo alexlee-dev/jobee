@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { SignInButton } from '../../components/SignInButton'
+import { SignInButtons } from '../../components/SignInButtons'
 Enzyme.configure({ adapter: new Adapter() })
 
 const mockReduxState = {}
@@ -9,16 +9,16 @@ const mockReduxState = {}
 const fns = {}
 
 const rerender = (props, additionalProps) =>
-  shallow(<SignInButton {...props} {...additionalProps} />)
+  shallow(<SignInButtons {...props} {...additionalProps} />)
 
 let scope
 
-describe('<SignInButton />', () => {
+describe('<SignInButtons />', () => {
   beforeEach(() => {
     scope = Object.assign({}, mockReduxState, fns)
   })
 
-  it('Should render the <SignInButton />.', () => {
+  it('Should render the <SignInButtons />.', () => {
     const wrapper = rerender(scope)
     expect(wrapper).toMatchSnapshot()
   })

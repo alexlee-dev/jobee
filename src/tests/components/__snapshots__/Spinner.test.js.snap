@@ -21,7 +21,7 @@ ShallowWrapper {
       "align": "center",
       "children": <onlyUpdateForKeys(Loader)
         color="#fca311"
-        css=""
+        css={Object {}}
         height={4}
         heightUnit="px"
         loading={true}
@@ -909,7 +909,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "color": "#fca311",
-        "css": "",
+        "css": Object {},
         "height": 4,
         "heightUnit": "px",
         "loading": true,
@@ -1454,7 +1454,7 @@ string",
         "align": "center",
         "children": <onlyUpdateForKeys(Loader)
           color="#fca311"
-          css=""
+          css={Object {}}
           height={4}
           heightUnit="px"
           loading={true}
@@ -2342,7 +2342,7 @@ string",
         "nodeType": "class",
         "props": Object {
           "color": "#fca311",
-          "css": "",
+          "css": Object {},
           "height": 4,
           "heightUnit": "px",
           "loading": true,

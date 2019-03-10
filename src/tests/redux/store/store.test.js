@@ -7,16 +7,18 @@ describe('Redux Store', () => {
       editMode: false,
       isDescriptionVisible: false,
       isLoading: true,
+      isOnboarding: false,
+      onboardingStep: 0,
       watchlistIndex: 0
     },
     firebase: {
-      database: { jobs: [] },
+      database: { companies: [], jobs: [] },
       hasCheckedForUser: false,
       user: {
         displayName: null,
         email: null,
         photoURL: null,
-        preferences: { watchlist: [] },
+        preferences: { companies: [], watchlist: [] },
         uid: null
       }
     }

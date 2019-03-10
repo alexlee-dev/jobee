@@ -3,6 +3,7 @@ import firebaseReducer from '../../../redux/reducers/firebase'
 describe('Firebase Reducer', () => {
   const firebaseDefaultState = {
     database: {
+      companies: [],
       jobs: []
     },
     hasCheckedForUser: false,
@@ -10,7 +11,7 @@ describe('Firebase Reducer', () => {
       displayName: null,
       email: null,
       photoURL: null,
-      preferences: { watchlist: [] },
+      preferences: { companies: [], watchlist: [] },
       uid: null
     }
   }
@@ -27,6 +28,7 @@ describe('Firebase Reducer', () => {
     })
     const expectedState = Object.assign({}, firebaseDefaultState, {
       database: {
+        companies: [],
         jobs: [1, 2, 3]
       }
     })

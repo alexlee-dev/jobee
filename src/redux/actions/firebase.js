@@ -8,6 +8,7 @@ export const SET_DATABASE = 'SET_DATABASE'
 export const SET_HAS_CHECKED_FOR_USER = 'SET_HAS_CHECKED_FOR_USER'
 export const SET_USER = 'SET_USER'
 export const SET_USER_PREFERENCES = 'SET_USER_PREFERENCES'
+export const SET_USER_PREFERENCE = 'SET_USER_PREFERENCE'
 export const SET_WATCHLIST = 'SET_WATCHLIST'
 export const SET_WATCHLIST_INDEX = 'SET_WATCHLIST_INDEX'
 
@@ -28,6 +29,10 @@ export const setUser = user => ({ type: SET_USER, payload: { user } })
 export const setUserPreferences = userPreferences => ({
   type: SET_USER_PREFERENCES,
   payload: { userPreferences }
+})
+export const setUserPreference = (preferenceName, data) => ({
+  type: SET_USER_PREFERENCE,
+  payload: { preferenceName, data }
 })
 export const setWatchlist = watchlist => ({
   type: SET_WATCHLIST,
@@ -166,6 +171,7 @@ export const getAndSetStartData = uid => {
             getAllDocumentsFromCollection('companies')
               .then(companiesArray => {
                 dispatch(setUserPreferences(userPreferences))
+                // TODO: Set the user's fav companies here
                 dispatch(setDatabase('companies', companiesArray))
                 dispatch(setDatabase('jobs', jobArray))
                 dispatch(setCurrentScreen('today'))
@@ -194,7 +200,7 @@ export const getAndSetStartData = uid => {
                   return id
                 })
                 const initialPreferences = {
-                  favoriteCompanies: [],
+                  companies: [],
                   watchlist: arrayOfIds
                 }
                 setDocument('users', uid, initialPreferences)
@@ -236,6 +242,24 @@ export const removeJobFromWatchlist = (uid, documentId) => {
             console.error(error)
             dispatch(setLoadingState(false))
           })
+      })
+      .catch(error => console.error(error))
+  }
+}
+
+export const setInitialCompany = (uid, company) => {
+  return (dispatch, getState) => {
+    const currentUserPreferences = getState().firebase.user.preferences
+    const newUserPreferences = Object.assign({}, currentUserPreferences, {
+      companies: [company]
+    })
+    return setDocument('users', uid, newUserPreferences)
+      .then(() => {
+        dispatch(setUserPreferences(newUserPreferences))
+        // dispatch(setOnboardingStep(1))
+        dispatch(setCurrentScreen('today'))
+        dispatch(setOnboarding(false))
+        dispatch(setLoadingState(false))
       })
       .catch(error => console.error(error))
   }

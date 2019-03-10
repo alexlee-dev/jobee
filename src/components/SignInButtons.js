@@ -3,7 +3,7 @@ import { Box, Button, Text } from 'grommet'
 import { signInWithRedirect } from '../firebase/auth'
 // import GoogleButton from 'react-google-button'
 
-export const SignInButton = ({ dispatch }) => {
+export const SignInButtons = ({ dispatch }) => {
   return (
     <Box>
       <Box gap="medium" fill="horizontal">
@@ -36,4 +36,4 @@ export const SignInButton = ({ dispatch }) => {
   )
 }
 
-export default SignInButton
+export default SignInButtons

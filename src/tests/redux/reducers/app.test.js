@@ -6,6 +6,8 @@ describe('App Reducer', () => {
     editMode: false,
     isDescriptionVisible: false,
     isLoading: true,
+    isOnboarding: false,
+    onboardingStep: 0,
     watchlistIndex: 0
   }
 
@@ -24,6 +26,8 @@ describe('App Reducer', () => {
       editMode: false,
       isDescriptionVisible: false,
       isLoading: true,
+      isOnboarding: false,
+      onboardingStep: 0,
       watchlistIndex: 0
     })
   })
@@ -38,6 +42,8 @@ describe('App Reducer', () => {
       editMode: false,
       isDescriptionVisible: false,
       isLoading: false,
+      isOnboarding: false,
+      onboardingStep: 0,
       watchlistIndex: 0
     })
   })

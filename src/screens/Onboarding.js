@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 import { Box, Form } from 'grommet'
 import ActionBarOnboarding from '../components/ActionBarOnboarding'
 import { onboardingContent } from '../constants'
+import { setInitialCompany } from '../redux/actions/firebase'
+import { setLoadingState } from '../redux/actions/app';
 
-const Onboarding = ({ app }) => {
+const Onboarding = ({ app, dispatch, firebase }) => {
   // const handleNext = () => {
   //   const { onboardingStep } = app
   //   dispatch(setOnboardingStep(onboardingStep + 1))
@@ -22,13 +24,8 @@ const Onboarding = ({ app }) => {
   // }
 
   const handleFormSubmission = ({ value }) => {
-    // * Can probably use Redux to look at the onboarding step
-    const { onboardingStep } = app
-
-    
-    const formInfo = value
-    
-    console.table(formInfo)
+    dispatch(setLoadingState(true))
+    dispatch(setInitialCompany(firebase.user.uid, value.company))
   }
 
   const { onboardingStep } = app
@@ -49,9 +46,10 @@ const Onboarding = ({ app }) => {
 
 Onboarding.propTypes = {
   app: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  firebase: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ app }) => ({ app })
+const mapStateToProps = ({ app, firebase }) => ({ app, firebase })
 
 export default connect(mapStateToProps)(Onboarding)
