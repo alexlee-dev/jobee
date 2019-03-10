@@ -8,8 +8,8 @@ const Onboarding1 = ({ firebase }) => {
   const companyNames = companies.map(({ id }) => id)
   return (
     <Box animation={{ type: 'fadeIn', duration: 3000 }}>
-      <Box height="25%">
-        <Image fit="contain" src="assets/svg/people-search.svg" />
+      <Box>
+        <Image fit="contain" height="150px" src="assets/svg/people-search.svg" />
       </Box>
       <Heading>Select a company to get started</Heading>
       <FormField
