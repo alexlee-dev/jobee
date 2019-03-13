@@ -26,3 +26,5 @@ node_modules
 /api/node_modules
 /api/package-lock.json
 \.vscode/
+
+pwa/coverage/
