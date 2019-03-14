@@ -8,15 +8,15 @@ export const SignInButtons = ({ dispatch }) => {
   return (
     <View style={styles.container}>
       <Button
-        containerStyle={styles.buttonContainer}
+        containerStyle={styles.signUpContainer}
         style={{ color: 'black' }}
         onPress={() => console.log('pressed')}
       >
         Sign Up
       </Button>
       <Button
-        containerStyle={styles.buttonContainer}
-        style={{ color: 'black' }}
+        containerStyle={styles.logInContainer}
+        style={{ color: 'white' }}
         onPress={() => console.log('pressed')}
       >
         Log In
@@ -59,15 +59,30 @@ export default SignInButtons
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginTop: 20,
+    marginBottom: 20,
+    width: '100%'
   },
-  buttonContainer: {
+  logInContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'center',
     padding: 10,
     height: 50,
-    width: '50%',
+    // width: '50%',
+    margin: 10,
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: '#00739d'
+  },
+  signUpContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    padding: 10,
+    height: 50,
+    // width: '50%',
     margin: 10,
     overflow: 'hidden',
     borderRadius: 4,

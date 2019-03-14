@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#14213D',
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: 25
   },
   versionTag: {
     color: '#fff',
