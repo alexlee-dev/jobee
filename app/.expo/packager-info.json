@@ -2,8 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 1517,
+  "packagerPid": 7825,
   "expoServerNgrokUrl": "https://4q-a9f.alexlee-dev.app.exp.direct",
   "packagerNgrokUrl": "https://packager.4q-a9f.alexlee-dev.app.exp.direct",
-  "ngrokPid": 1541
+  "ngrokPid": 7846,
+  "webpackServerPort": null
 }
