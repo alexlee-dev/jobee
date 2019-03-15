@@ -4,26 +4,31 @@
     "slug": "jobee",
     "privacy": "public",
     "sdkVersion": "32.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "version": "0.10.3",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#14213D"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
+    },
+    "extra": {
+      "FIREBASE_API_KEY": "AIzaSyDl4JQtZFD0SMRiGUqHiLZMUGXDjWrU_aM",
+      "FIREBASE_AUTH_DOMAIN": "jobee-a97f0.firebaseapp.com",
+      "FIREBASE_DATABASE_URL": "https://jobee-a97f0.firebaseio.com",
+      "FIREBASE_PROJECT_ID": "jobee-a97f0",
+      "FIREBASE_STORAGE_BUCKET": "jobee-a97f0.appspot.com",
+      "FIREBASE_MESSAGING_SENDER_ID": "394234248282",
+      "SENTRY_DSN": "https://ae2b9b87efea473096d53536f7b6f5a3@sentry.io/1407869",
+      "SENTRY_TOKEN": "4036fabf28174ecf9908eb636813e63790cf55082a7248daa938ce4d2220600f"
     }
   }
 }
