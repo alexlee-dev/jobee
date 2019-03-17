@@ -1,15 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { StyleSheet, View } from 'react-native'
 import Button from 'react-native-button'
+import { setCurrentScreen } from '../redux/actions/app'
 // import { signInWithRedirect } from '../firebase/auth'
 
 export const SignInButtons = ({ dispatch }) => {
+  const handleSignUpPress = () => {
+    dispatch(setCurrentScreen('signUpScreen'))
+  }
+
   return (
     <View style={styles.container}>
       <Button
         containerStyle={styles.buttonSignUp}
         style={{ color: 'black' }}
-        onPress={() => console.log('pressed')}
+        onPress={handleSignUpPress}
       >
         Sign Up
       </Button>
@@ -24,7 +31,13 @@ export const SignInButtons = ({ dispatch }) => {
   )
 }
 
-export default SignInButtons
+SignInButtons.propTypes = {
+  dispatch: PropTypes.func.isRequired
+}
+
+const mapDispatchToProps = ({ dispatch }) => ({ dispatch })
+
+export default connect(mapDispatchToProps)(SignInButtons)
 
 const styles = StyleSheet.create({
   container: {

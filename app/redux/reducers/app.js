@@ -1,5 +1,5 @@
 const appDefaultState = {
-  currentScreen: 'signInScreen',
+  currentScreen: 'signUpScreen',
   editMode: false,
   isDescriptionVisible: false,
   isLoading: true,
