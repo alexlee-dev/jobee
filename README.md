@@ -17,7 +17,7 @@
     <br> 
 </p>
 
-<div align="center">[https://jobee.netlify.com/](https://jobee.netlify.com/)<br></div>
+<div align="center">https://jobee.netlify.com/<br></div>
 
 ## 📝 Table of Contents
 
