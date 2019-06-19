@@ -3,7 +3,7 @@
  <img width=256px height=256px src="https://github.com/alexlee-dev/jobee/raw/master/jobee.png" alt="Jobee logo"></a>
 </p>
 
-<h3 align="center">Navvy</h3>
+<h3 align="center">Jobee</h3>
 
 <div align="center">
 
