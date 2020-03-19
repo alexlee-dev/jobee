@@ -643,4 +643,4 @@ patch:
     - react-scripts > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
         patched: '2019-07-03T22:07:39.239Z'
     - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
-        patched: '2020-03-19T15:18:26.482Z'
+        patched: '2020-03-19T15:20:37.909Z'
