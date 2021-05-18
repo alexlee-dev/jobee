@@ -3,7 +3,7 @@
   "version": "0.10.3",
   "description": "Job Finder.",
   "dependencies": {
-    "@firebase/util": "^0.2.8",
+    "@firebase/util": "^0.3.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/pro-light-svg-icons": "^5.7.2",
